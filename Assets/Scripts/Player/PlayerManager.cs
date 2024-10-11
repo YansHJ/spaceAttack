@@ -10,7 +10,7 @@ public class PlayerManager : MonoBehaviour
 
     private Vector2 playerDir;
 
-    public int playerSpeed = 200;
+    public int playerSpeed = 400;
 
     private void Awake()
     {
