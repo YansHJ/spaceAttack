@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +10,8 @@ public class PlayerManager : MonoBehaviour
     private InputSystem_Player playerInput;
 
     private Vector2 playerDir;
+
+    public MMF_Player camemaShakeFeedBack;
 
     public int playerSpeed = 400;
 
@@ -30,7 +33,7 @@ public class PlayerManager : MonoBehaviour
     private void Update()
     {
         playerDir = playerInput.PlayerMove.Move.ReadValue<Vector2>();
-        
+        //camemaShakeFeedBack.PlayFeedbacks();
     }
 
     private void FixedUpdate()
