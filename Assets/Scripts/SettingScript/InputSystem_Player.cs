@@ -94,6 +94,34 @@ public partial class @InputSystem_Player: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""PlayerOperate"",
+            ""id"": ""4140d2ad-5120-4de1-b4a9-8022ee47f1ae"",
+            ""actions"": [
+                {
+                    ""name"": ""Space"",
+                    ""type"": ""Button"",
+                    ""id"": ""9b0416bf-fde5-46b0-8983-aee342f1afc8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""b2f1afdb-a89d-4f2a-b460-b97f57d998be"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Space"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -101,11 +129,15 @@ public partial class @InputSystem_Player: IInputActionCollection2, IDisposable
         // PlayerMove
         m_PlayerMove = asset.FindActionMap("PlayerMove", throwIfNotFound: true);
         m_PlayerMove_Move = m_PlayerMove.FindAction("Move", throwIfNotFound: true);
+        // PlayerOperate
+        m_PlayerOperate = asset.FindActionMap("PlayerOperate", throwIfNotFound: true);
+        m_PlayerOperate_Space = m_PlayerOperate.FindAction("Space", throwIfNotFound: true);
     }
 
     ~@InputSystem_Player()
     {
         UnityEngine.Debug.Assert(!m_PlayerMove.enabled, "This will cause a leak and performance issues, InputSystem_Player.PlayerMove.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_PlayerOperate.enabled, "This will cause a leak and performance issues, InputSystem_Player.PlayerOperate.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -209,8 +241,58 @@ public partial class @InputSystem_Player: IInputActionCollection2, IDisposable
         }
     }
     public PlayerMoveActions @PlayerMove => new PlayerMoveActions(this);
+
+    // PlayerOperate
+    private readonly InputActionMap m_PlayerOperate;
+    private List<IPlayerOperateActions> m_PlayerOperateActionsCallbackInterfaces = new List<IPlayerOperateActions>();
+    private readonly InputAction m_PlayerOperate_Space;
+    public struct PlayerOperateActions
+    {
+        private @InputSystem_Player m_Wrapper;
+        public PlayerOperateActions(@InputSystem_Player wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Space => m_Wrapper.m_PlayerOperate_Space;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerOperate; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerOperateActions set) { return set.Get(); }
+        public void AddCallbacks(IPlayerOperateActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlayerOperateActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerOperateActionsCallbackInterfaces.Add(instance);
+            @Space.started += instance.OnSpace;
+            @Space.performed += instance.OnSpace;
+            @Space.canceled += instance.OnSpace;
+        }
+
+        private void UnregisterCallbacks(IPlayerOperateActions instance)
+        {
+            @Space.started -= instance.OnSpace;
+            @Space.performed -= instance.OnSpace;
+            @Space.canceled -= instance.OnSpace;
+        }
+
+        public void RemoveCallbacks(IPlayerOperateActions instance)
+        {
+            if (m_Wrapper.m_PlayerOperateActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPlayerOperateActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlayerOperateActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlayerOperateActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PlayerOperateActions @PlayerOperate => new PlayerOperateActions(this);
     public interface IPlayerMoveActions
     {
         void OnMove(InputAction.CallbackContext context);
+    }
+    public interface IPlayerOperateActions
+    {
+        void OnSpace(InputAction.CallbackContext context);
     }
 }

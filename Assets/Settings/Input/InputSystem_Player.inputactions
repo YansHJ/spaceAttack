@@ -72,6 +72,34 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "PlayerOperate",
+            "id": "4140d2ad-5120-4de1-b4a9-8022ee47f1ae",
+            "actions": [
+                {
+                    "name": "Space",
+                    "type": "Button",
+                    "id": "9b0416bf-fde5-46b0-8983-aee342f1afc8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b2f1afdb-a89d-4f2a-b460-b97f57d998be",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Space",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
