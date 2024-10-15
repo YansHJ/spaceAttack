@@ -117,6 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerWeaponSpeed: 400
   maxWeaponHealth: 10
+  weaponId: 100002
+  weaponMuzzles: []
 --- !u!1 &2319088677339827800
 GameObject:
   m_ObjectHideFlags: 0

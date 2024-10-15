@@ -108,6 +108,15 @@ public partial class @InputSystem_Player: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BaseAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""043e39e1-1175-4dda-9f6b-5f4f1d6c4cf8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -119,6 +128,17 @@ public partial class @InputSystem_Player: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Space"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""088df337-76eb-44ff-87e4-4639fa361fad"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BaseAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -133,6 +153,7 @@ public partial class @InputSystem_Player: IInputActionCollection2, IDisposable
         // PlayerOperate
         m_PlayerOperate = asset.FindActionMap("PlayerOperate", throwIfNotFound: true);
         m_PlayerOperate_Space = m_PlayerOperate.FindAction("Space", throwIfNotFound: true);
+        m_PlayerOperate_BaseAttack = m_PlayerOperate.FindAction("BaseAttack", throwIfNotFound: true);
     }
 
     ~@InputSystem_Player()
@@ -247,11 +268,13 @@ public partial class @InputSystem_Player: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerOperate;
     private List<IPlayerOperateActions> m_PlayerOperateActionsCallbackInterfaces = new List<IPlayerOperateActions>();
     private readonly InputAction m_PlayerOperate_Space;
+    private readonly InputAction m_PlayerOperate_BaseAttack;
     public struct PlayerOperateActions
     {
         private @InputSystem_Player m_Wrapper;
         public PlayerOperateActions(@InputSystem_Player wrapper) { m_Wrapper = wrapper; }
         public InputAction @Space => m_Wrapper.m_PlayerOperate_Space;
+        public InputAction @BaseAttack => m_Wrapper.m_PlayerOperate_BaseAttack;
         public InputActionMap Get() { return m_Wrapper.m_PlayerOperate; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -264,6 +287,9 @@ public partial class @InputSystem_Player: IInputActionCollection2, IDisposable
             @Space.started += instance.OnSpace;
             @Space.performed += instance.OnSpace;
             @Space.canceled += instance.OnSpace;
+            @BaseAttack.started += instance.OnBaseAttack;
+            @BaseAttack.performed += instance.OnBaseAttack;
+            @BaseAttack.canceled += instance.OnBaseAttack;
         }
 
         private void UnregisterCallbacks(IPlayerOperateActions instance)
@@ -271,6 +297,9 @@ public partial class @InputSystem_Player: IInputActionCollection2, IDisposable
             @Space.started -= instance.OnSpace;
             @Space.performed -= instance.OnSpace;
             @Space.canceled -= instance.OnSpace;
+            @BaseAttack.started -= instance.OnBaseAttack;
+            @BaseAttack.performed -= instance.OnBaseAttack;
+            @BaseAttack.canceled -= instance.OnBaseAttack;
         }
 
         public void RemoveCallbacks(IPlayerOperateActions instance)
@@ -295,5 +324,6 @@ public partial class @InputSystem_Player: IInputActionCollection2, IDisposable
     public interface IPlayerOperateActions
     {
         void OnSpace(InputAction.CallbackContext context);
+        void OnBaseAttack(InputAction.CallbackContext context);
     }
 }

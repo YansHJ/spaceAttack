@@ -8,6 +8,8 @@ public class WeaponCharecter : MonoBehaviour
 
     public int maxWeaponHealth;
 
+    public int weaponId;
+
     public List<Transform> weaponMuzzles;
 
     private void Awake()

@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6181363957524708797
 Transform:
   m_ObjectHideFlags: 0
@@ -115,3 +115,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerWeaponSpeed: 500
   maxWeaponHealth: 20
+  weaponId: 100001
+  weaponMuzzles: []

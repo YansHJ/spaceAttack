@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _playerInput.PlayerOperate.Space.performed += Space => PlayerSpaceTouch();
+        _playerInput.PlayerOperate.BaseAttack.performed += BaseAttack => PlayerBaseAttack();
         StartCoroutine(PlayerAutoRotation());
     }
 
@@ -60,16 +61,25 @@ public class PlayerController : MonoBehaviour
         PlayerMove();
     }
 
+    /// <summary>
+    /// 玩家移动
+    /// </summary>
     private void PlayerMove()
     {
-        _playerRb.linearVelocity = _playerCharecter.playerSpeed * Time.fixedDeltaTime * _playerDir;
+        _playerRb.linearVelocity = _playerCharecter.playerCurrentSpeed * Time.fixedDeltaTime * _playerDir;
     }
 
+    /// <summary>
+    /// 玩家空格(Test)
+    /// </summary>
     private void PlayerSpaceTouch()
     {
         _camemaShakeFeedBack.PlayFeedbacks();
     }
 
+    /// <summary>
+    /// 玩家武器跟随转向
+    /// </summary>
     private void PlayerWeaponRotate()
     {
         //鼠标与玩家的方向向量
@@ -82,12 +92,19 @@ public class PlayerController : MonoBehaviour
         _playerWeaponTrans.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
+    /// <summary>
+    /// 世界鼠标位置
+    /// </summary>
     private void MousePosition()
     {
         mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPosition.z = 0;
     }
 
+    /// <summary>
+    /// 玩家本体自转
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator PlayerAutoRotation()
     {
         Vector3 currentEulerAngles;
@@ -109,5 +126,17 @@ public class PlayerController : MonoBehaviour
             _playerMainBodyTrans.eulerAngles = currentEulerAngles;
             yield return new WaitForSeconds(0.05f);
         }
+    }
+
+    /// <summary>
+    /// 玩家基础攻击
+    /// </summary>
+    private void PlayerBaseAttack()
+    {
+        if (null == _playerCharecter.currentWeapon)
+        {
+            return;
+        }
+        _playerCharecter.currentWeapon.GetComponent<IWeapon>().Attack();
     }
 }
