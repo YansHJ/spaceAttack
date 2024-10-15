@@ -10,11 +10,11 @@ public class WeaponCharecter : MonoBehaviour
 
     public int weaponId;
 
-    public List<Transform> weaponMuzzles;
+    public GameObject bullet;
 
-    private void Awake()
+    public List<Transform> GetMuzzles()
     {
         Transform[] transforms = transform.GetComponentsInChildren<Transform>(true);
-        weaponMuzzles = transforms.Where(child => child.name == "GunMuzzle").ToList();
+        return transforms.Where(child => child.name == "GunMuzzle").ToList();
     }
 }

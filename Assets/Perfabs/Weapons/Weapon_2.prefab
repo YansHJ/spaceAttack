@@ -119,6 +119,7 @@ MonoBehaviour:
   maxWeaponHealth: 10
   weaponId: 100002
   weaponMuzzles: []
+  bullet: {fileID: 2732539764998594106, guid: a99794db7340c704fb2877e4af31f23b, type: 3}
 --- !u!1 &2319088677339827800
 GameObject:
   m_ObjectHideFlags: 0

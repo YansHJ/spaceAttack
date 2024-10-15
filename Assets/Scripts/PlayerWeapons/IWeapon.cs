@@ -1,5 +1,7 @@
 
+using UnityEngine;
+
 public interface IWeapon
 {
-    void Attack();
+    void Attack(Transform topTransform);
 }
