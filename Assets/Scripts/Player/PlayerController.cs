@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
         //计算改方向向量的弧度值 * 180/π -> 角度值
         float angle = Mathf.Atan2(mouseDir.y, mouseDir.x) * Mathf.Rad2Deg;
         //偏移
-        angle -= 90f;
+        //angle -= 90f;
         //玩家武器旋转至鼠标位置
         _playerWeaponTrans.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
@@ -137,6 +137,6 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        _playerCharecter.currentWeapon.GetComponent<IWeapon>().Attack(transform);
+        _playerCharecter.currentWeapon.GetComponent<Weapon>().Attack(transform);
     }
 }
