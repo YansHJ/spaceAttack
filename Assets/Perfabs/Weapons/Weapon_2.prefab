@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4807580540644177821}
   - component: {fileID: 7109615427563170348}
-  - component: {fileID: 6694878848709998856}
   - component: {fileID: -6792885133161922612}
+  - component: {fileID: 6694878848709998856}
   m_Layer: 0
   m_Name: Weapon_2
   m_TagString: Untagged
@@ -91,18 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6694878848709998856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1785962935397462097}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70d0f68f13addfe4a98d8cd8d6cbe7e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-6792885133161922612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,8 +106,19 @@ MonoBehaviour:
   playerWeaponSpeed: 400
   maxWeaponHealth: 10
   weaponId: 100002
-  weaponMuzzles: []
   bullet: {fileID: 2732539764998594106, guid: a99794db7340c704fb2877e4af31f23b, type: 3}
+--- !u!114 &6694878848709998856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785962935397462097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70d0f68f13addfe4a98d8cd8d6cbe7e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2319088677339827800
 GameObject:
   m_ObjectHideFlags: 0

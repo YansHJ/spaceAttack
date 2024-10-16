@@ -15,6 +15,7 @@ public class WeaponCharecter : MonoBehaviour
     public List<Transform> GetMuzzles()
     {
         Transform[] transforms = transform.GetComponentsInChildren<Transform>(true);
+        Debug.Log(transforms.Length + "_______" + transforms);
         return transforms.Where(child => child.name == "GunMuzzle").ToList();
     }
 }
