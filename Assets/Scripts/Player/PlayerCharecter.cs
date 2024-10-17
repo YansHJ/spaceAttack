@@ -74,6 +74,7 @@ public class PlayerCharecter : MonoBehaviour
             if (ownedWeapons.Count < 1)
             {
                 playerCurrentSpeed = playerBaseSpeed;
+                weaponActive = false;
                 return;
             }
             else
@@ -86,6 +87,9 @@ public class PlayerCharecter : MonoBehaviour
         playerCurrentSpeed = currentWeapon.GetComponent<WeaponCharecter>().playerWeaponSpeed;
         playerCurrentWeaponHealth = currentWeapon.GetComponent<WeaponCharecter>().maxWeaponHealth;
         weaponActive = true;
-        Instantiate(currentWeapon, _playerWeaponTrans);
+        GameObject weapon = Instantiate(currentWeapon);
+        weapon.transform.SetParent(_playerWeaponTrans, false);
+        weapon.transform.localScale = Vector3.one;
+        weapon.transform.localPosition = Vector3.zero;
     }
 }
