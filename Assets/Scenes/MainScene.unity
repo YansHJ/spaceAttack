@@ -678,7 +678,7 @@ MonoBehaviour:
     CustomLookAtTarget: 0
   Lens:
     FieldOfView: 40
-    OrthographicSize: 15
+    OrthographicSize: 40
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
@@ -793,6 +793,7 @@ MonoBehaviour:
   weaponActive: 1
   currentWeapon: {fileID: 0}
   ownedWeapons:
+  - {fileID: 1785962935397462097, guid: 398d539f943b3c2409d46724e22b1751, type: 3}
   - {fileID: 6731570145641353021, guid: 2ceadb2e556080f4b9e5a65d67b13ab3, type: 3}
 --- !u!1 &526752201
 GameObject:
@@ -838,11 +839,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 777e2fd74ffb6c440b8a86b813747fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerWeaponSpeed: 0
-  maxWeaponHealth: 0
-  weaponId: 0
-  bullet: {fileID: 0}
-  muzzles: []
 --- !u!1 &707415765
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,7 +876,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 0}
+  m_BackGroundColor: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -905,7 +901,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 40
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

@@ -1,9 +1,6 @@
 using UnityEngine;
 
-public class Weapon_2 : MonoBehaviour, IWeapon
+public class Weapon_2 : Weapon
 {
-    public void Attack(Transform topTransform)
-    {
-        Debug.Log("Weapon_2 Attack");
-    }
+   
 }

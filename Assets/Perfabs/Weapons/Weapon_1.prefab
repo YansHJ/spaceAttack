@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 16a86a7f581fc4dfb953e0df8ad3ecac, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -164,7 +164,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 16a86a7f581fc4dfb953e0df8ad3ecac, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -278,6 +278,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerWeaponSpeed: 600
   maxWeaponHealth: 200
+  bulletSpeed: 30
+  bulletOffsetLeft: -0.1
+  bulletOffsetRight: 0.1
   weaponId: 100001
   bulletPerfab: {fileID: 2732539764998594106, guid: a99794db7340c704fb2877e4af31f23b, type: 3}
   muzzles:
