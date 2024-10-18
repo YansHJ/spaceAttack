@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class RotateTest : MonoBehaviour
 {
-    //Í¨¹ıÍÏ×§¸³ÖµµÄ×Ó¶ÔÏó£¬ÔÚ±àÒëÊ±¾ÍÒÑ¾­ÍÏ×§³ÉÎª×Ó¶ÔÏó£¨µ±¸¸¶ÔÏóĞı×ª»òÒÆ¶¯Ê±£¬¸Ã¶ÔÏóµÄtransform¿ÉÒÔ¸úËæ¸Ä±ä£©
+    //é€šè¿‡æ‹–æ‹½èµ‹å€¼çš„å­å¯¹è±¡ï¼Œåœ¨ç¼–è¯‘æ—¶å°±å·²ç»æ‹–æ‹½æˆä¸ºå­å¯¹è±¡ï¼ˆå½“çˆ¶å¯¹è±¡æ—‹è½¬æˆ–ç§»åŠ¨æ—¶ï¼Œè¯¥å¯¹è±¡çš„transformå¯ä»¥è·Ÿéšæ”¹å˜ï¼‰
     public Transform sonTrans;
-    //Í¨¹ıÍÏ×§¸³ÖµµÄÔ¤ÖÆ¼ş£¬ÔÚ½Å±¾ÀïÍ¨¹ı´úÂëÊµÀı»¯£¬²¢ÉèÖÃ¸¸¼¶Î»ÉÏÃæµÄ
+    //é€šè¿‡æ‹–æ‹½èµ‹å€¼çš„é¢„åˆ¶ä»¶ï¼Œåœ¨è„šæœ¬é‡Œé€šè¿‡ä»£ç å®ä¾‹åŒ–ï¼Œå¹¶è®¾ç½®çˆ¶çº§ä½ä¸Šé¢çš„
     public Transform son2Trans;
 
     private GameObject _son2Obj;
@@ -20,13 +20,13 @@ public class RotateTest : MonoBehaviour
 
     private void Update()
     {
-        //»ñÈ¡ÊÀ½çÊó±ê×ø±ê
+        //è·å–ä¸–ç•Œé¼ æ ‡åæ ‡
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //µ±Ç°¸¸¼¶Î»ÖÃÓëÊó±êÎ»ÖÃµÄÏòÁ¿
+        //å½“å‰çˆ¶çº§ä½ç½®ä¸é¼ æ ‡ä½ç½®çš„å‘é‡
         Vector3 mouseDir = (mousePos - transform.position).normalized;
-        //×ª»¯Îª½Ç¶È
+        //è½¬åŒ–ä¸ºè§’åº¦
         float angle = Mathf.Atan2(mouseDir.x, mouseDir.y) * Mathf.Rad2Deg;
-        //¸¸¼¶Ğı×ª
+        //çˆ¶çº§æ—‹è½¬
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
 
