@@ -80,16 +80,11 @@ public class PlayerCharecter : MonoBehaviour
             else
             {
                 currentWeapon = ownedWeapons[0];
-                ownedWeapons.Remove(currentWeapon);
+                //ownedWeapons.Remove(currentWeapon);
                 weaponActive = true;
             }
         }
-        playerCurrentSpeed = currentWeapon.GetComponent<WeaponCharecter>().playerWeaponSpeed;
-        playerCurrentWeaponHealth = currentWeapon.GetComponent<WeaponCharecter>().maxWeaponHealth;
         weaponActive = true;
-        GameObject weapon = Instantiate(currentWeapon);
-        weapon.transform.SetParent(_playerWeaponTrans, false);
-        weapon.transform.localScale = Vector3.one;
-        weapon.transform.localPosition = Vector3.zero;
+        EventManager.CallEquipTheNextWeapon(currentWeapon);
     }
 }

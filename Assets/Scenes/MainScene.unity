@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &69191545
 Transform:
   m_ObjectHideFlags: 0
@@ -714,7 +714,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &479398180
 Transform:
   m_ObjectHideFlags: 0
@@ -803,6 +803,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 526752202}
+  - component: {fileID: 526752203}
   m_Layer: 11
   m_Name: Weapons
   m_TagString: PlayerWeapon
@@ -825,6 +826,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 479398180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &526752203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526752201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 777e2fd74ffb6c440b8a86b813747fee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerWeaponSpeed: 0
+  maxWeaponHealth: 0
+  weaponId: 0
+  bullet: {fileID: 0}
+  muzzles: []
 --- !u!1 &707415765
 GameObject:
   m_ObjectHideFlags: 0

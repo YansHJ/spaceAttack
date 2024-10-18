@@ -6,11 +6,13 @@ public class RotateTest : MonoBehaviour
 
     public Transform son2Trans;
 
+    private GameObject _son2Obj;
+
     private void Start()
     {
-        GameObject son2Obj = Instantiate(son2Trans.gameObject, sonTrans.position, sonTrans.rotation);
+        _son2Obj = Instantiate(son2Trans.gameObject);
         /*son2Obj.transform.parent = sonTrans;*/
-        son2Obj.transform.SetParent(sonTrans, false);
+        _son2Obj.transform.SetParent(sonTrans, false);
         /*son2Obj.transform.localPosition = Vector3.zero;
         son2Obj.transform.localRotation = Quaternion.identity;*/
     }
@@ -24,8 +26,8 @@ public class RotateTest : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
 
-        Debug.Log("son2:" + son2Trans.position);
-        Debug.Log("son2 local:" + son2Trans.localPosition);
+        Debug.Log("son2:" + _son2Obj.transform.position);
+        Debug.Log("son2 local:" + _son2Obj.transform.localPosition);
         Debug.Log("son1:" + sonTrans.position);
         Debug.Log("son1 local:" + sonTrans.localPosition);
     }

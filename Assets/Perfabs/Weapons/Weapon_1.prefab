@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6441127539460531953}
   m_Layer: 0
   m_Name: GunMuzzle
-  m_TagString: Untagged
+  m_TagString: PlayerWeaponMuzzle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 370646039051468955}
   m_Layer: 0
   m_Name: GunMuzzle
-  m_TagString: Untagged
+  m_TagString: PlayerWeaponMuzzle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,7 +184,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6181363957524708797}
   - component: {fileID: 7241276888004820835}
-  - component: {fileID: 7574743627225684487}
   - component: {fileID: 2662316370009028564}
   m_Layer: 0
   m_Name: Weapon_1
@@ -265,22 +264,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7574743627225684487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6731570145641353021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 777e2fd74ffb6c440b8a86b813747fee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerWeaponSpeed: 500
-  maxWeaponHealth: 20
-  weaponId: 100001
-  bullet: {fileID: 2732539764998594106, guid: a99794db7340c704fb2877e4af31f23b, type: 3}
 --- !u!114 &2662316370009028564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,5 +276,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8b7e3a82d85a2743ac6a326ab4e8079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponCharecter: {fileID: 7574743627225684487}
-  playerWeaponTrans: {fileID: 0}
+  playerWeaponSpeed: 600
+  maxWeaponHealth: 200
+  weaponId: 100001
+  bulletPerfab: {fileID: 2732539764998594106, guid: a99794db7340c704fb2877e4af31f23b, type: 3}
+  muzzles:
+  - {fileID: 1704871530552885720}
+  - {fileID: 4105856306685138393}

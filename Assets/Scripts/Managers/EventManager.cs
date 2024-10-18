@@ -1,12 +1,13 @@
 
 using System;
+using UnityEngine;
 
 public class EventManager
 {
-    public static event Action EquipTheNextWeapon;
+    public static event Action<GameObject> EquipTheNextWeapon;
 
-    public static void CallEquipTheNextWeapon()
+    public static void CallEquipTheNextWeapon(GameObject currentWeapon)
     {
-        EquipTheNextWeapon?.Invoke();
+        EquipTheNextWeapon?.Invoke(currentWeapon);
     }
 }

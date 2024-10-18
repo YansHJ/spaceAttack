@@ -1,21 +1,41 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WeaponCharecter : MonoBehaviour
 {
-    public int playerWeaponSpeed;
+    private Weapon _weapon;
 
-    public int maxWeaponHealth;
+    private PlayerCharecter _playerCharecter;
 
-    public int weaponId;
-
-    public GameObject bullet;
-
-    public List<Transform> GetMuzzles()
+    private void Awake()
     {
-        Transform[] transforms = transform.GetComponentsInChildren<Transform>(true);
-        Debug.Log(transforms.Length + "_______" + transforms);
-        return transforms.Where(child => child.name == "GunMuzzle").ToList();
+        _playerCharecter = transform.parent.GetComponent<PlayerCharecter>();
+    }
+
+    private void OnEnable()
+    {
+        EventManager.EquipTheNextWeapon += OnEquipTheNextWeapon;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.EquipTheNextWeapon -= OnEquipTheNextWeapon;
+    }
+
+    private void OnEquipTheNextWeapon(GameObject currentWeapon)
+    {
+        GameObject weapon = Instantiate(currentWeapon);
+        weapon.transform.SetParent(transform, false);
+        _playerCharecter.playerCurrentSpeed = weapon.GetComponent<Weapon>().playerWeaponSpeed;
+        _playerCharecter.playerCurrentWeaponHealth = weapon.GetComponent<Weapon>().maxWeaponHealth;
+        _weapon = weapon.GetComponent<Weapon>();
+    }
+
+    public void Attack()
+    {
+        _weapon.Attack();
     }
 }

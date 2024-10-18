@@ -137,6 +137,6 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        _playerCharecter.currentWeapon.GetComponent<Weapon>().Attack(transform);
+        _playerWeaponTrans.GetComponent<WeaponCharecter>().Attack();
     }
 }
