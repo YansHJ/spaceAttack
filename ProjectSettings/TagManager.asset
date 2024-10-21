@@ -4,8 +4,10 @@
 TagManager:
   serializedVersion: 3
   tags:
+  - PlayerBody
   - PlayerWeaponMuzzle
   - PlayerWeapon
+  - Enemy
   layers:
   - Default
   - TransparentFX

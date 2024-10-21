@@ -185,9 +185,10 @@ GameObject:
   - component: {fileID: 6181363957524708797}
   - component: {fileID: 7241276888004820835}
   - component: {fileID: 2662316370009028564}
+  - component: {fileID: -339847386478557447}
   m_Layer: 0
   m_Name: Weapon_1
-  m_TagString: Untagged
+  m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,3 +287,76 @@ MonoBehaviour:
   muzzles:
   - {fileID: 1704871530552885720}
   - {fileID: 4105856306685138393}
+--- !u!68 &-339847386478557447
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6731570145641353021}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 5.963149, y: -0.76367676}
+  - {x: 4.425878, y: 0.5035814}
+  - {x: 2.642527, y: 0.76701903}
+  - {x: 2.5827076, y: 3.1119266}
+  - {x: 1.9464518, y: 3.1750202}
+  - {x: 1.9157503, y: 0.72925067}
+  - {x: 0.5517395, y: 2.1150885}
+  - {x: -0.7862168, y: 2.0090947}
+  - {x: -1.8814517, y: 0.87004375}
+  - {x: -2.0308127, y: 2.973758}
+  - {x: -2.5585897, y: 2.8914309}
+  - {x: -2.7225409, y: 0.5777789}
+  - {x: -4.59478, y: 0.44400868}
+  - {x: -5.9172497, y: -0.849851}
+  - {x: -4.232777, y: -0.82101387}
+  - {x: -4.8603077, y: -1.5190667}
+  - {x: -4.8396034, y: -4.562011}
+  - {x: -2.5326226, y: -2.411206}
+  - {x: -2.4393847, y: -0.7924342}
+  - {x: -1.9269563, y: -3.0395823}
+  - {x: -0.25874734, y: -4.301882}
+  - {x: -0.80203706, y: -1.9272475}
+  - {x: -0.25650054, y: -2.2487822}
+  - {x: 0.7626306, y: -2.0897522}
+  - {x: 0.33435345, y: -4.438521}
+  - {x: 2.0355294, y: -2.8848238}
+  - {x: 2.5349326, y: -1.0458736}
+  - {x: 2.5589206, y: -2.604043}
+  - {x: 4.9798384, y: -4.423215}
+  - {x: 4.921031, y: -1.3434331}
+  - {x: 4.0904636, y: -0.6310328}
+  - {x: 6.0029674, y: -0.7636777}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0

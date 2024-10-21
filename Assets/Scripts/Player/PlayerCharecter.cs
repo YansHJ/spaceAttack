@@ -80,7 +80,7 @@ public class PlayerCharecter : MonoBehaviour
             else
             {
                 currentWeapon = ownedWeapons[0];
-                //ownedWeapons.Remove(currentWeapon);
+                ownedWeapons.Remove(currentWeapon);
                 weaponActive = true;
             }
         }

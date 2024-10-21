@@ -10,4 +10,11 @@ public class EventManager
     {
         EquipTheNextWeapon?.Invoke(currentWeapon);
     }
+
+    public static event Action<Collider2D, float> CauseDamage;
+
+    public static void CallCauseDamage(Collider2D other, float bulletDamage)
+    {
+        CauseDamage?.Invoke(other, bulletDamage);
+    }
 }
