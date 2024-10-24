@@ -69,8 +69,8 @@ public class MinionGenericScript : MonoBehaviour
     /// </summary>
     private void CloseToPlayer()
     {
-        Debug.Log("进入靠近状态");
-        Debug.Log("当前距离玩家：" + (Vector3.Distance(_playerObj.transform.position, transform.position)));
+        //Debug.Log("进入靠近状态");
+        //Debug.Log("当前距离玩家：" + (Vector3.Distance(_playerObj.transform.position, transform.position)));
         //靠近玩家
         _destination = _playerObj.transform.position;
         //移动
@@ -90,9 +90,9 @@ public class MinionGenericScript : MonoBehaviour
     /// </summary>
     private void IrregularMove()
     {
-        Debug.Log("进入无规则状态");
-        Debug.Log("当前距离玩家：" + (Vector3.Distance(_playerObj.transform.position, transform.position)));
-        Debug.Log("当前距离目的地：" + (Vector3.Distance(transform.position, _destination)));
+        //Debug.Log("进入无规则状态");
+        //Debug.Log("当前距离玩家：" + (Vector3.Distance(_playerObj.transform.position, transform.position)));
+        //Debug.Log("当前距离目的地：" + (Vector3.Distance(transform.position, _destination)));
         //超过了安全距离范围
         if (Vector3.Distance(_playerObj.transform.position, transform.position) > (farFromPlayer + farFromPlayerOffset))
         {
