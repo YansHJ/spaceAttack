@@ -1396,6 +1396,7 @@ MonoBehaviour:
   enemyBulletPerFab: {fileID: 6752362901816072304, guid: afd7046371069e74ea7b16d99b5d2128, type: 3}
   enemyBulletSpeed: 30
   farFromPlayer: 50
+  farFromPlayerOffset: 20
   evasionRangeLeft: -10
   evasionRangeRight: 10
 --- !u!212 &1760587883
@@ -1467,7 +1468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyMaxHealth: 10
   enemyCurrentHealth: 0
-  enemySpeed: 100
+  enemySpeed: 250
 --- !u!50 &1760587885
 Rigidbody2D:
   serializedVersion: 5

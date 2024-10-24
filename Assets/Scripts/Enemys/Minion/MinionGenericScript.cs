@@ -10,10 +10,12 @@ public class MinionGenericScript : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
 
+    //敌人当前状态
+    private MinionEnemyState _minionEnemyState = MinionEnemyState.CloseToPlayer;
     //移动目的地
     private Vector3 _destination;
     //到达目的地
-    private bool _arrived = false;
+    private bool _arrived = true;
 
     [Header("攻击间隔/s")]
     public float enemyAttackInterval = 1f;
@@ -23,6 +25,8 @@ public class MinionGenericScript : MonoBehaviour
     public float enemyBulletSpeed;
     [Header("距离玩家安全距离")]
     public float farFromPlayer = 10f;
+    [Header("距离玩家距离偏移(活动范围)")]
+    public float farFromPlayerOffset = 5f;
     [Header("无规则闪避范围左")]
     [Range(-10f, 0)]
     public float evasionRangeLeft;
@@ -47,38 +51,72 @@ public class MinionGenericScript : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
-        EnemyFollowPlayer();
+    {   
+        //敌人状态机
+        switch(_minionEnemyState)
+        {
+            case MinionEnemyState.CloseToPlayer:
+                CloseToPlayer();
+                break;
+            case MinionEnemyState.IrregularMove:
+                IrregularMove();
+                break;
+        }
     }
 
     /// <summary>
-    /// 敌人跟随策略
+    /// 靠近玩家
     /// </summary>
-    private void EnemyFollowPlayer()
+    private void CloseToPlayer()
     {
-        if (Vector3.Distance(_playerObj.transform.position, transform.position) >= 10)
+        Debug.Log("进入靠近状态");
+        Debug.Log("当前距离玩家：" + (Vector3.Distance(_playerObj.transform.position, transform.position)));
+        //靠近玩家
+        _destination = _playerObj.transform.position;
+        //移动
+        _rigidbody.linearVelocity = _enemyCharecter.enemySpeed * Time.fixedDeltaTime * ToDestinationDir(_destination);
+        //距离玩家达到指定距离范围
+        if (Vector3.Distance(_playerObj.transform.position, transform.position) <= farFromPlayer)
         {
-            //靠近玩家
-            _destination = _playerObj.transform.position;
+            //切换至无规则运动状态
+            _minionEnemyState = MinionEnemyState.IrregularMove;
+            //目的地切换为敌人自己
+            _destination = transform.position;
         }
-        else if (_arrived)
+    }
+
+    /// <summary>
+    /// 无规则活动
+    /// </summary>
+    private void IrregularMove()
+    {
+        Debug.Log("进入无规则状态");
+        Debug.Log("当前距离玩家：" + (Vector3.Distance(_playerObj.transform.position, transform.position)));
+        Debug.Log("当前距离目的地：" + (Vector3.Distance(transform.position, _destination)));
+        //超过了安全距离范围
+        if (Vector3.Distance(_playerObj.transform.position, transform.position) > (farFromPlayer + farFromPlayerOffset))
         {
-            //无规则闪避
+            //切换至靠近状态
+            _minionEnemyState = MinionEnemyState.CloseToPlayer;
+            //切换到达状态
+            _arrived = true;
+        }
+        //无规则运动
+        if (_arrived)
+        {
+            //无规则运动目的地
             float evasionX = Random.Range(evasionRangeLeft, evasionRangeRight);
             float evasionY = Random.Range(evasionRangeLeft, evasionRangeRight);
             _destination = new Vector3(transform.position.x + evasionX, transform.position.y + evasionY);
             _arrived = false;
         }
-        else
-        {
-            //TODO 待完善
-        }
+        //移动
+        _rigidbody.linearVelocity = _enemyCharecter.enemySpeed * Time.fixedDeltaTime * ToDestinationDir(_destination);
+        //移动到目的地
         if (Vector3.Distance(transform.position, _destination) <= 1)
         {
             _arrived = true;
         }
-        //移动
-        _rigidbody.linearVelocity = _enemyCharecter.enemySpeed * Time.fixedDeltaTime * ToDestinationDir(_destination);
     }
 
     /// <summary>
@@ -124,4 +162,14 @@ public class MinionGenericScript : MonoBehaviour
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
         bulletRb.linearVelocity = attackDir * enemyBulletSpeed;
     }
+}
+
+/// <summary>
+/// 低级敌人状态
+/// </summary>
+public enum MinionEnemyState {
+    //贴近玩家
+    CloseToPlayer,
+    //无规则移动
+    IrregularMove
 }
