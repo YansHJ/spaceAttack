@@ -166,4 +166,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletlifeTime: 3
-  bulletDamage: 1
+  bulletDamage: 30
