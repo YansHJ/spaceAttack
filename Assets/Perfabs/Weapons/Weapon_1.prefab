@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4105856306685138393}
   - component: {fileID: 6441127539460531953}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GunMuzzle
   m_TagString: PlayerWeaponMuzzle
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1704871530552885720}
   - component: {fileID: 370646039051468955}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GunMuzzle
   m_TagString: PlayerWeaponMuzzle
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 7241276888004820835}
   - component: {fileID: 2662316370009028564}
   - component: {fileID: -339847386478557447}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Weapon_1
   m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
