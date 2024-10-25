@@ -1,7 +1,9 @@
+using DamageNumbersPro;
 using UnityEngine;
 
 public class DamageManager : Singleton<DamageManager>
 {
+    public DamageNumber damageNumberPerfab;
 
     private void OnEnable()
     {
@@ -18,6 +20,7 @@ public class DamageManager : Singleton<DamageManager>
         Debug.Log("当前伤害Tag: " + other.tag);
         if (other.tag.StartsWith("Player"))
         {
+            damageNumberPerfab.Spawn(other.transform.position, bulletDamage);
             PlayerCharecter _playerCharecter = FindTopComponet<PlayerCharecter>(other);
             if (_playerCharecter.playerCurrentWeaponHealth - bulletDamage <= 0)
             {

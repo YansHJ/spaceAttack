@@ -1540,6 +1540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b898aa2121e244841a15a7b19291c854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageNumberPerfab: {fileID: 6516331556040109566, guid: f0496635df43707429f692413711aba8, type: 3}
 --- !u!1 &2082131949
 GameObject:
   m_ObjectHideFlags: 0
