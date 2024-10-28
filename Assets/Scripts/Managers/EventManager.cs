@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EventManager
@@ -16,5 +17,22 @@ public class EventManager
     public static void CallCauseDamage(Collider2D other, float bulletDamage)
     {
         CauseDamage?.Invoke(other, bulletDamage);
+    }
+
+    /// <summary>
+    /// 开始生成怪物
+    /// </summary>
+    public static event Action<List<GameLevelMonsterInfo>> MonsterGenerateStart;
+    public static void CallMonsterGenerateStart(List<GameLevelMonsterInfo> monsterInfos)
+    {
+        MonsterGenerateStart?.Invoke(monsterInfos);
+    }
+    /// <summary>
+    /// 停止生成怪物
+    /// </summary>
+    public static event Action MonsterGenerateStop;
+    public static void CallMonsterGenerateStop()
+    {
+        MonsterGenerateStop?.Invoke();
     }
 }
