@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5932015137352048747}
   - component: {fileID: 4460779102023338055}
   - component: {fileID: 4684439410158981152}
-  m_Layer: 0
-  m_Name: Bullet_Enemy
+  m_Layer: 13
+  m_Name: Bullet_Enemy_Base_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,7 +133,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 24576
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -166,4 +166,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletlifeTime: 3
-  bulletDamage: 30
+  bulletDamage: 1

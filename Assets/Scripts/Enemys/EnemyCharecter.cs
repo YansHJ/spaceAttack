@@ -8,4 +8,17 @@ public class EnemyCharecter : MonoBehaviour
     public int enemyCurrentHealth;
     [Header("敌人速度")]
     public int enemySpeed;
+
+    private void Awake()
+    {
+        enemyCurrentHealth = enemyMaxHealth;
+    }
+
+    private void Update()
+    {
+        if (enemyCurrentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
