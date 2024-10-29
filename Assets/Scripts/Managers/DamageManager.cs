@@ -39,7 +39,7 @@ public class DamageManager : Singleton<DamageManager>
 
     private void DamageToEnemys(Collider2D other, float bulletDamage)
     {
-        EnemyCharecter enemyCharecter = FindTopComponet<EnemyCharecter>(other);
+        EnemyCharecter enemyCharecter = other.transform.GetComponent<EnemyCharecter>();
         //计算对敌伤害
         enemyCharecter.enemyCurrentHealth -= (int) bulletDamage;
     }

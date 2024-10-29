@@ -1609,6 +1609,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterParent: {fileID: 695741602}
+  _currentGenerateStates: 0
+  _currentMonsterInfos: []
+  _maxMonsterCnt: 0
+  _currentMonsterCnt: 0
+  _currentProbabilityScale: 1
 --- !u!1 &2049685963
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,15 +11,20 @@ public class MonsterManager : Singleton<MonsterManager>
     [Header("怪物生成父物体")]
     public GameObject monsterParent;
     //当前状态
-    private MonsterGenerateStates _currentGenerateStates;
+    [SerializeField]
+    private MonsterGenerateStates _currentGenerateStates = MonsterGenerateStates.Stop;
     //当前怪物信息
+    [SerializeField]
     private List<GameLevelMonsterInfo> _currentMonsterInfos;
     //最大怪物生成数量
-    private int _maxMonsterCnt;
+    [SerializeField]
+    private int _maxMonsterCnt = 0;
     //当前怪物数量
-    private int _currentMonsterCnt;
+    [SerializeField]
+    private int _currentMonsterCnt = 0;
     //当前生成概率比例
-    private float _currentProbabilityScale;
+    [SerializeField]
+    private float _currentProbabilityScale = 1f;
 
     private void OnEnable()
     {
@@ -32,21 +38,14 @@ public class MonsterManager : Singleton<MonsterManager>
         EventManager.MonsterGenerateStop -= OnMonsterGenerateStop;
     }
 
-    private void Start()
-    {
-        _currentGenerateStates = MonsterGenerateStates.Stop;
-        _maxMonsterCnt = 0;
-        _currentMonsterCnt = 0;
-        _currentProbabilityScale = 1f;
-    }
-
     private void Update()
     {
-        switch(_currentGenerateStates)
+        //生成状态
+        switch (_currentGenerateStates)
         {
-            case MonsterGenerateStates.Stop :
+            case MonsterGenerateStates.Stop:
                 break;
-            case MonsterGenerateStates.Start :
+            case MonsterGenerateStates.Start:
                 StartGenerate();
                 break;
 
@@ -56,6 +55,7 @@ public class MonsterManager : Singleton<MonsterManager>
     private void OnMonsterGenerateStop()
     {
         _currentGenerateStates = MonsterGenerateStates.Stop;
+        StopCoroutine(GenerateMonster());
         StopGenerate();
     }
 
@@ -74,8 +74,8 @@ public class MonsterManager : Singleton<MonsterManager>
         {
             CountMaxMonster();
             InitProbabilityScale();
+            StartCoroutine(GenerateMonster());
         }
-        GenerateMonster();
     }
 
     /// <summary>
@@ -100,8 +100,10 @@ public class MonsterManager : Singleton<MonsterManager>
     /// <summary>
     /// 生成怪物
     /// </summary>
-    private void GenerateMonster()
+    private IEnumerator GenerateMonster()
     {
+        // TODO 优化问题！！！！
+
         float randomValue;
         float probabilityCumulative;
         while (_currentMonsterCnt <= _maxMonsterCnt)
@@ -114,11 +116,13 @@ public class MonsterManager : Singleton<MonsterManager>
                 if (randomValue <= probabilityCumulative / _currentProbabilityScale)
                 {
                     //生成
-                    Debug.Log("生成了: " + monsterInfo.monsterPrefab.name);
-                    //数量+1
-                    _currentMonsterCnt++;
+                    GameObject monster = Instantiate(monsterInfo.monsterPrefab, new Vector3(0,0,0), Quaternion.identity);
+                    monster.transform.SetParent(monsterParent.transform, false);
+                    //统计当前怪物数量
+                    _currentMonsterCnt = monsterParent.transform.childCount;
                 }
             }
+            yield return new WaitForSeconds(3f);
         }
     }
 

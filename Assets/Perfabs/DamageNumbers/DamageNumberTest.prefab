@@ -281,15 +281,15 @@ MonoBehaviour:
     fromNumber: 10
     toNumber: 100
   durationFadeIn: 0.2
-  enableOffsetFadeIn: 1
-  offsetFadeIn: {x: 0.5, y: 0}
+  enableOffsetFadeIn: 0
+  offsetFadeIn: {x: 0, y: 0.5}
   enableScaleFadeIn: 1
-  scaleFadeIn: {x: 2, y: 2}
+  scaleFadeIn: {x: 0.5, y: 2}
   enableCrossScaleFadeIn: 0
   crossScaleFadeIn: {x: 1, y: 1.5}
-  enableShakeFadeIn: 0
+  enableShakeFadeIn: 1
   shakeOffsetFadeIn: {x: 0, y: 1.5}
-  shakeFrequencyFadeIn: 4
+  shakeFrequencyFadeIn: 2
   durationFadeOut: 0.2
   enableOffsetFadeOut: 0
   offsetFadeOut: {x: 0.5, y: 0}
@@ -310,10 +310,10 @@ MonoBehaviour:
     randomFlip: 0
   enableVelocity: 1
   velocitySettings:
-    minX: -1
-    maxX: 1
-    minY: 4
-    maxY: 5
+    minX: -3
+    maxX: 3
+    minY: 6
+    maxY: 12
     randomFlip: 0
     dragX: 0.1
     dragY: 1
@@ -554,7 +554,7 @@ MonoBehaviour:
     radius: 4
     pushOffset: 0.5
   updateDelay: 0.0125
-  enablePooling: 0
+  enablePooling: 1
   poolSize: 50
   disableOnSceneLoad: 1
   editorLastFont: Smear Outline
