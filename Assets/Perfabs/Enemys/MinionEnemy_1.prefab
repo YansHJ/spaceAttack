@@ -176,9 +176,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5446acbf0fad5c94184873253b535c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAttackInterval: 3
+  enemyAttackInterval: 5
   enemyBulletPerFab: {fileID: 6752362901816072304, guid: afd7046371069e74ea7b16d99b5d2128, type: 3}
-  enemyBulletSpeed: 20
+  enemyBulletSpeed: 15
   farFromPlayer: 50
   farFromPlayerOffset: 20
   evasionRangeLeft: -10

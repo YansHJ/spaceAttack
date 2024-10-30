@@ -147,7 +147,7 @@ public class MonsterManager : Singleton<MonsterManager>
     {
         Vector2 topLeft = cameraManager.TopLeftPosition();
         Vector2 topRight = cameraManager.TopRightPosition();
-        int randomValue = RandomValue(1, 5);
+        int randomValue = RandomValue(1, 4);
         return randomValue switch
         {
             1 => new Vector2(topLeft.x - 1, RandomValue(0, (int)topLeft.y)),
