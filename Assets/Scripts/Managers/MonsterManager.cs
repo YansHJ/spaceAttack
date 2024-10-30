@@ -8,6 +8,8 @@ using UnityEngine;
 /// </summary>
 public class MonsterManager : Singleton<MonsterManager>
 {
+    [Header("相机管理")]
+    public CameraManager cameraManager;
     [Header("怪物生成父物体")]
     public GameObject monsterParent;
     //当前状态
@@ -25,6 +27,8 @@ public class MonsterManager : Singleton<MonsterManager>
     //当前生成概率比例
     [SerializeField]
     private float _currentProbabilityScale = 1f;
+    [SerializeField]
+    public float _monsterGenerateInterval = 1f;
 
     private void OnEnable()
     {
@@ -59,10 +63,11 @@ public class MonsterManager : Singleton<MonsterManager>
         StopGenerate();
     }
 
-    private void OnMonsterGenerateStart(List<GameLevelMonsterInfo> monsterInfos)
+    private void OnMonsterGenerateStart(List<GameLevelMonsterInfo> monsterInfos, float generateInterval)
     {
         _currentGenerateStates = MonsterGenerateStates.Start;
         _currentMonsterInfos = monsterInfos;
+        _monsterGenerateInterval = generateInterval;
     }
 
     /// <summary>
@@ -102,7 +107,7 @@ public class MonsterManager : Singleton<MonsterManager>
     /// </summary>
     private IEnumerator GenerateMonster()
     {
-        // TODO 优化问题！！！！
+        // TODO 性能优化问题！！！！
 
         float randomValue;
         float probabilityCumulative;
@@ -116,13 +121,13 @@ public class MonsterManager : Singleton<MonsterManager>
                 if (randomValue <= probabilityCumulative / _currentProbabilityScale)
                 {
                     //生成
-                    GameObject monster = Instantiate(monsterInfo.monsterPrefab, new Vector3(0,0,0), Quaternion.identity);
+                    GameObject monster = Instantiate(monsterInfo.monsterPrefab, MonsterGeneratePosition(), Quaternion.identity);
                     monster.transform.SetParent(monsterParent.transform, false);
                     //统计当前怪物数量
                     _currentMonsterCnt = monsterParent.transform.childCount;
                 }
             }
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(_monsterGenerateInterval);
         }
     }
 
@@ -132,6 +137,35 @@ public class MonsterManager : Singleton<MonsterManager>
     private void InitProbabilityScale()
     {
         _currentProbabilityScale = _currentMonsterInfos.Sum(m => m.refreshProbability);
+    }
+
+    /// <summary>
+    /// 怪物生成位置
+    /// </summary>
+    /// <returns></returns>
+    private Vector2 MonsterGeneratePosition()
+    {
+        Vector2 topLeft = cameraManager.TopLeftPosition();
+        Vector2 topRight = cameraManager.TopRightPosition();
+        int randomValue = RandomValue(1, 5);
+        return randomValue switch
+        {
+            1 => new Vector2(topLeft.x - 1, RandomValue(0, (int)topLeft.y)),
+            2 => new Vector2(RandomValue(0, (int)topRight.x), topRight.y + 1),
+            3 => new Vector2(topRight.x + 1, RandomValue(0, (int)topRight.y)),
+            _ => new Vector2(0, 0),
+        };
+    }
+
+    /// <summary>
+    /// 获取指定区间的随机数
+    /// </summary>
+    /// <param name="left">左</param>
+    /// <param name="right">右</param>
+    /// <returns></returns>
+    private int RandomValue(int left, int right)
+    {
+        return Random.Range(left, right);
     }
 
 }

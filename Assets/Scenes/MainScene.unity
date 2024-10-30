@@ -1608,12 +1608,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e4b89611099fc4ca5c90713403a8fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraManager: {fileID: 1118159677}
   monsterParent: {fileID: 695741602}
   _currentGenerateStates: 0
   _currentMonsterInfos: []
   _maxMonsterCnt: 0
   _currentMonsterCnt: 0
   _currentProbabilityScale: 1
+  _monsterGenerateInterval: 1
 --- !u!1 &2049685963
 GameObject:
   m_ObjectHideFlags: 0

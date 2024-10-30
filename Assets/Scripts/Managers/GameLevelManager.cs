@@ -13,6 +13,6 @@ public class GameLevelManager : Singleton<GameLevelManager>
 
     private void LevelExecute()
     {
-        EventManager.CallMonsterGenerateStart(_currentLevel.monsterInfos);
+        EventManager.CallMonsterGenerateStart(_currentLevel.monsterInfos, _currentLevel.monsterGenerateInterval);
     }
 }

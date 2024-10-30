@@ -22,10 +22,10 @@ public class EventManager
     /// <summary>
     /// 开始生成怪物
     /// </summary>
-    public static event Action<List<GameLevelMonsterInfo>> MonsterGenerateStart;
-    public static void CallMonsterGenerateStart(List<GameLevelMonsterInfo> monsterInfos)
+    public static event Action<List<GameLevelMonsterInfo>, float> MonsterGenerateStart;
+    public static void CallMonsterGenerateStart(List<GameLevelMonsterInfo> monsterInfos, float generateInterval)
     {
-        MonsterGenerateStart?.Invoke(monsterInfos);
+        MonsterGenerateStart?.Invoke(monsterInfos, generateInterval);
     }
     /// <summary>
     /// 停止生成怪物

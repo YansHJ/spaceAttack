@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1727741053161943331}
   - component: {fileID: 5855377873388090878}
   m_Layer: 14
-  m_Name: Enemy
+  m_Name: MinionEnemy_1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyAttackInterval: 3
   enemyBulletPerFab: {fileID: 6752362901816072304, guid: afd7046371069e74ea7b16d99b5d2128, type: 3}
-  enemyBulletSpeed: 30
+  enemyBulletSpeed: 20
   farFromPlayer: 50
   farFromPlayerOffset: 20
   evasionRangeLeft: -10
