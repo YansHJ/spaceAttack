@@ -8,10 +8,10 @@ using UnityEngine;
 /// </summary>
 public class MonsterManager : Singleton<MonsterManager>
 {
-    [Header("相机管理")]
-    public CameraManager cameraManager;
     [Header("怪物生成父物体")]
     public GameObject monsterParent;
+    [Header("相机管理")]
+    private CameraManager _cameraManager;
     //当前状态
     [SerializeField]
     private MonsterGenerateStates _currentGenerateStates = MonsterGenerateStates.Stop;
@@ -29,6 +29,11 @@ public class MonsterManager : Singleton<MonsterManager>
     private float _currentProbabilityScale = 1f;
     [SerializeField]
     public float _monsterGenerateInterval = 1f;
+
+    private void Start()
+    {
+        _cameraManager = CameraManager.Instance;
+    }
 
     private void OnEnable()
     {
@@ -145,8 +150,8 @@ public class MonsterManager : Singleton<MonsterManager>
     /// <returns></returns>
     private Vector2 MonsterGeneratePosition()
     {
-        Vector2 topLeft = cameraManager.TopLeftPosition();
-        Vector2 topRight = cameraManager.TopRightPosition();
+        Vector2 topLeft = _cameraManager.TopLeftPosition();
+        Vector2 topRight = _cameraManager.TopRightPosition();
         int randomValue = RandomValue(1, 4);
         return randomValue switch
         {
