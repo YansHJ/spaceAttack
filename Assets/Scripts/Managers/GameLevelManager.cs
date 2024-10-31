@@ -16,8 +16,15 @@ public class GameLevelManager : Singleton<GameLevelManager>
 
     private void LevelExecute()
     {
+        StartCoroutine(LevelStart());
+    }
+
+    IEnumerator LevelStart()
+    {
         //同步当前关卡时长
         _currentTimer = _currentLevel.levelTimer;
+        //15s准备时间
+        yield return new WaitForSeconds(15f);
         //开始生成怪物事件
         EventManager.CallMonsterGenerateStart(_currentLevel.monsterInfos, _currentLevel.monsterGenerateInterval);
         //关卡倒计时开始

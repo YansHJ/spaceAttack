@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 436a82ec61e227b4b89ea7d5c606ab55, type: 3}
-  m_Name: Level_100001
+  m_Name: Level_800001
   m_EditorClassIdentifier: 
-  levelName: "\u906D\u9047\u6218"
+  levelName: "\u906D\u9047\u6218 1-1"
   levelId: 800001
   levelOfLevel: 1
   levelType: 0
-  levelTimer: 10
+  levelTimer: 120
   monsterGenerateInterval: 3
   monsterInfos:
   - monsterPrefab: {fileID: 7454374665101387646, guid: 6cb534e9a9bfed947addece6e40812a7, type: 3}
