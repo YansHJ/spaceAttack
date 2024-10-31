@@ -29,8 +29,6 @@ public class WeaponCharecter : MonoBehaviour
     {
         GameObject weapon = Instantiate(currentWeapon);
         weapon.transform.SetParent(transform, false);
-        _playerCharecter.playerCurrentSpeed = weapon.GetComponent<Weapon>().playerWeaponSpeed;
-        _playerCharecter.playerCurrentWeaponHealth = weapon.GetComponent<Weapon>().maxWeaponHealth;
         _weapon = weapon.GetComponent<Weapon>();
     }
 

@@ -62,6 +62,7 @@ public class PlayerCharecter : MonoBehaviour
     private void PlayerCharecterInit()
     {
         playerCurrentHealth = playerMaxHealth;
+        playerCurrentSpeed = playerBaseSpeed;
     }
 
     /// <summary>
@@ -82,6 +83,9 @@ public class PlayerCharecter : MonoBehaviour
                 currentWeapon = ownedWeapons[0];
                 ownedWeapons.Remove(currentWeapon);
                 weaponActive = true;
+                //修改玩家属性
+                playerCurrentSpeed = currentWeapon.GetComponent<Weapon>().playerWeaponSpeed;
+                playerCurrentWeaponHealth = currentWeapon.GetComponent<Weapon>().maxWeaponHealth;
             }
         }
         weaponActive = true;
