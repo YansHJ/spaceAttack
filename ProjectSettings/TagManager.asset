@@ -8,6 +8,8 @@ TagManager:
   - PlayerWeaponMuzzle
   - PlayerWeapon
   - Enemy
+  - BulletsParent
+  - EnemysParent
   layers:
   - Default
   - TransparentFX

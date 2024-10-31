@@ -10,6 +10,8 @@ public class MinionGenericScript : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
 
+    private GameObject _bulletsParent;
+
     //敌人当前状态
     private MinionEnemyState _minionEnemyState = MinionEnemyState.CloseToPlayer;
     //移动目的地
@@ -36,6 +38,7 @@ public class MinionGenericScript : MonoBehaviour
 
     private void Awake()
     {
+        _bulletsParent = GameObject.FindGameObjectWithTag("BulletsParent");
         _playerObj = GameObject.FindGameObjectWithTag("Player");
         if (null == _playerObj)
         {
@@ -159,6 +162,7 @@ public class MinionGenericScript : MonoBehaviour
     private void InstantiateBullets(Vector3 attackDir)
     {
         GameObject bullet = Instantiate(enemyBulletPerFab, transform.position, transform.rotation);
+        bullet.transform.parent = _bulletsParent.transform;
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
         bulletRb.linearVelocity = attackDir * enemyBulletSpeed;
     }

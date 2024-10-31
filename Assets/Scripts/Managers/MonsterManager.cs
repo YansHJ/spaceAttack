@@ -63,9 +63,14 @@ public class MonsterManager : Singleton<MonsterManager>
 
     private void OnMonsterGenerateStop()
     {
+        //停止生成
         _currentGenerateStates = MonsterGenerateStates.Stop;
-        StopCoroutine(GenerateMonster());
+        //停止怪物生成协程
+        //StopCoroutine(GenerateMonster());
+        //停止生成
         StopGenerate();
+        //清空所有怪物
+        DestroyAllMonster();
     }
 
     private void OnMonsterGenerateStart(List<GameLevelMonsterInfo> monsterInfos, float generateInterval)
@@ -96,7 +101,6 @@ public class MonsterManager : Singleton<MonsterManager>
         _maxMonsterCnt = 0;
         _currentMonsterCnt = 0;
         _currentProbabilityScale = 1f;
-        _currentMonsterInfos = null;
     }
 
     /// <summary>
@@ -116,7 +120,7 @@ public class MonsterManager : Singleton<MonsterManager>
 
         float randomValue;
         float probabilityCumulative;
-        while (_currentMonsterCnt <= _maxMonsterCnt)
+        while (_currentMonsterCnt <= _maxMonsterCnt && _currentGenerateStates == MonsterGenerateStates.Start)
         {
             randomValue = Random.Range(0.1f, 0.99f);
             probabilityCumulative = 0f;
@@ -171,6 +175,17 @@ public class MonsterManager : Singleton<MonsterManager>
     private int RandomValue(int left, int right)
     {
         return Random.Range(left, right);
+    }
+
+    /// <summary>
+    /// 清空怪物父物体下的所有怪物
+    /// </summary>
+    private void DestroyAllMonster()
+    {
+        foreach(Transform child in monsterParent.transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
 
 }
