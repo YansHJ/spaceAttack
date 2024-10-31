@@ -37,7 +37,7 @@ public class GameLevelManager : Singleton<GameLevelManager>
     /// <returns></returns>
     IEnumerator LevelCountDown()
     {
-        while (_currentTimer >= 0)
+        while (_currentTimer >= 1)
         {
             _currentTimer--;
             yield return new WaitForSeconds(1f);
@@ -63,5 +63,7 @@ public class GameLevelManager : Singleton<GameLevelManager>
         _currentLevel = _currentLevel.nextLevelBranchs[0];
         //停止怪物生成事件
         EventManager.CallMonsterGenerateStop();
+        //暂时
+        LevelExecute();
     }
 }
