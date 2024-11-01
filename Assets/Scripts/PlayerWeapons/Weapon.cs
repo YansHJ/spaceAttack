@@ -34,7 +34,7 @@ public class Weapon : MonoBehaviour
 
     public void Attack()
     {
-        _bulletsParent = GameObject.FindGameObjectWithTag("BulletsParent");
+        _bulletsParent = GameObject.FindGameObjectWithTag(TagConstants.BULLETS_PARENT);
         //获取鼠标世界坐标
         Vector3 mousePosition = GetMousePos();
         //mousePosition.z = 0;

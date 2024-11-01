@@ -21,25 +21,31 @@ public class MinionGenericScript : MonoBehaviour
 
     [Header("攻击间隔/s")]
     public float enemyAttackInterval = 1f;
+
     [Header("敌人子弹预制件")]
     public GameObject enemyBulletPerFab;
+
     [Header("敌人子弹速度")]
     public float enemyBulletSpeed;
+
     [Header("距离玩家安全距离")]
     public float farFromPlayer = 10f;
+
     [Header("距离玩家距离偏移(活动范围)")]
     public float farFromPlayerOffset = 5f;
+
     [Header("无规则闪避范围左")]
     [Range(-10f, 0)]
     public float evasionRangeLeft;
+
     [Header("无规则闪避范围右")]
     [Range(0, 10f)]
     public float evasionRangeRight;
 
     private void Awake()
     {
-        _bulletsParent = GameObject.FindGameObjectWithTag("BulletsParent");
-        _playerObj = GameObject.FindGameObjectWithTag("Player");
+        _bulletsParent = GameObject.FindGameObjectWithTag(TagConstants.BULLETS_PARENT);
+        _playerObj = GameObject.FindGameObjectWithTag(TagConstants.PLAYER);
         if (null == _playerObj)
         {
             Debug.Log("无法获取玩家");
