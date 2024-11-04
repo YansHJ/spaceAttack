@@ -1,4 +1,6 @@
+using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerStatusUIController : MonoBehaviour
@@ -13,12 +15,17 @@ public class PlayerStatusUIController : MonoBehaviour
 
     private void Start()
     {
-        _playerCharecter = GameManager.Instance.player.GetComponent<PlayerCharecter>();
+        //尝试获取玩家
+        GameManager.Instance.TryGetPlayer((GameObject player) => { _playerCharecter = player.GetComponent<PlayerCharecter>(); });
     }
 
     private void Update()
     {
-        _playerHealthText.text = _playerCharecter.playerCurrentHealth.ToString();
-        _WeaponHealthText.text = _playerCharecter.playerCurrentWeaponHealth.ToString();
+        if (_playerCharecter != null)
+        {
+            _playerHealthText.text = _playerCharecter.playerCurrentHealth.ToString();
+            _WeaponHealthText.text = _playerCharecter.playerCurrentWeaponHealth.ToString();
+        }
     }
+
 }

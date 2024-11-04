@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
         _playerInput.PlayerOperate.Space.performed += Space => PlayerSpaceTouch();
         _playerInput.PlayerOperate.BaseAttack.performed += BaseAttack => PlayerBaseAttack();
         StartCoroutine(PlayerAutoRotation());
+        //玩家初始化事件
+        EventManager.CallPlayerInitCompleted(this.gameObject);
     }
 
     private void OnEnable()
