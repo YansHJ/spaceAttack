@@ -70,6 +70,7 @@ public class PlayerStatusUIController : MonoBehaviour
     {
         RefreshHealthText();
         RefreshHealth();
+        CheckWeaponHealthDisPlay();
     }
 
     /// <summary>
@@ -122,6 +123,20 @@ public class PlayerStatusUIController : MonoBehaviour
         {
             _playerHealthText.text = _playerCharecter.playerCurrentHealth.ToString();
             _WeaponHealthText.text = _playerCharecter.playerCurrentWeaponHealth.ToString();
+        }
+    }
+
+    private void CheckWeaponHealthDisPlay()
+    {
+        if (_weaponHealthFront.sizeDelta.x <= 0)
+        {
+            _weaponHealthBack.gameObject.SetActive(false);
+            _WeaponHealthText.gameObject.SetActive(false);
+        } 
+        else
+        {
+            _weaponHealthBack.gameObject.SetActive(true);
+            _WeaponHealthText.gameObject.SetActive(true);
         }
     }
 

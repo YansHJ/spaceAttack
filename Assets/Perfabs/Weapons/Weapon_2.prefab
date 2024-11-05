@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerWeaponSpeed: 450
-  maxWeaponHealth: 300
+  maxWeaponHealth: 20
   bulletSpeed: 50
   bulletOffsetLeft: -0.0716
   bulletOffsetRight: 0.0605
