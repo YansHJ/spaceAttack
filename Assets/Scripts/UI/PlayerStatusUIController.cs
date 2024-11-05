@@ -13,10 +13,11 @@ public class PlayerStatusUIController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _WeaponHealthText;
 
-    private void Start()
+    private async void Start()
     {
         //尝试获取玩家
-        GameManager.Instance.TryGetPlayer((GameObject player) => { _playerCharecter = player.GetComponent<PlayerCharecter>(); });
+        GameObject _player = await GameManager.Instance.TryGetPlayer();
+        _playerCharecter = _player.GetComponent<PlayerCharecter>();
     }
 
     private void Update()

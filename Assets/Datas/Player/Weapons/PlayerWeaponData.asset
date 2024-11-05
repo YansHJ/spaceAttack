@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0c0fd0919d49c49809cdabe3d1611e, type: 3}
   m_Name: PlayerWeaponData
   m_EditorClassIdentifier: 
-  allPlayerWeapons:
-  - {fileID: 6731570145641353021, guid: 2ceadb2e556080f4b9e5a65d67b13ab3, type: 3}
-  - {fileID: 1785962935397462097, guid: 398d539f943b3c2409d46724e22b1751, type: 3}
-  currentPlayerWeapons: []
+  playerWeaponList:
+  - weaponId: 200001
+    weaponName: "\u53CC\u7FFC"
+    weaponGrade: 0
+    weaponObj: {fileID: 6731570145641353021, guid: 2ceadb2e556080f4b9e5a65d67b13ab3, type: 3}
+  - weaponId: 200002
+    weaponName: "\u5355\u4F53"
+    weaponGrade: 0
+    weaponObj: {fileID: 1785962935397462097, guid: 398d539f943b3c2409d46724e22b1751, type: 3}

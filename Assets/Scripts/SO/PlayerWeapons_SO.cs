@@ -4,6 +4,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerWeaponData", menuName = "Yans/players/PlayerWeaponData")]
 public class PlayerWeapons_SO : ScriptableObject
 {
-    //玩家可拥有的所有武器
-    public List<GameObject> allPlayerWeapons;
+    //玩家拥有的所有武器
+    public List<WeaponInfo> playerWeaponList;
 }

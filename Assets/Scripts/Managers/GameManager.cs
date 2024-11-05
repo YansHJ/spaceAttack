@@ -1,11 +1,15 @@
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
     //玩家游戏对象
     private GameObject _player;
+
+    //玩家获取队列
+    private TaskCompletionSource<GameObject> _playerCompletionSource = new TaskCompletionSource<GameObject>();
 
     protected override void Awake()
     {
@@ -28,36 +32,26 @@ public class GameManager : Singleton<GameManager>
     private void OnPlayerDestroied()
     {
         _player = null;
+        //重置队列
+        _playerCompletionSource = new TaskCompletionSource<GameObject>();
     }
 
     private void OnPlayerInitCompleted(GameObject playerObj)
     {
         _player = playerObj;
+        //队列返回结果
+        _playerCompletionSource.TrySetResult(_player);
     }
 
-    /// <summary>
-    /// 尝试获取玩家实体
-    /// </summary>
-    /// <param name="callBack">回调方法</param>
-    /// <returns></returns>
-    public bool TryGetPlayer(Action<GameObject> callBack)
+    public async Task<GameObject> TryGetPlayer()
     {
         if (_player != null)
         {
-            callBack?.Invoke(_player);
-            return true;
+            return _player;
         }
-        else
-        {
-            StartCoroutine(TryGetPlayerIEnumerator(callBack));
-            return false;
-        }
+        return await _playerCompletionSource.Task;
     }
 
-    IEnumerator TryGetPlayerIEnumerator(Action<GameObject> callBack)
-    {
-        yield return new WaitUntil(() => _player != null);
-        callBack?.Invoke(_player);
-    }
+    
 
 }

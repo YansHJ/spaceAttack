@@ -114,9 +114,17 @@ public class MinionGenericScript : MonoBehaviour
         if (_arrived)
         {
             //无规则运动目的地
-            float evasionX = Random.Range(evasionRangeLeft, evasionRangeRight);
-            float evasionY = Random.Range(evasionRangeLeft, evasionRangeRight);
-            _destination = new Vector3(transform.position.x + evasionX, transform.position.y + evasionY);
+            for (int i = 0; i <= 30; i++)
+            {
+                float evasionX = Random.Range(evasionRangeLeft, evasionRangeRight);
+                float evasionY = Random.Range(evasionRangeLeft, evasionRangeRight);
+                _destination = new Vector3(transform.position.x + evasionX, transform.position.y + evasionY);
+                //判断是否超过了相机视口
+                if (CameraManager.Instance.IsInView(_destination))
+                {
+                    break;
+                }
+            }
             _arrived = false;
         }
         //移动
