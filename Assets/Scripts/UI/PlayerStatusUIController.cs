@@ -29,9 +29,11 @@ public class PlayerStatusUIController : MonoBehaviour
     private RectTransform _weaponHealthFront;
 
     //血条宽度比例(一滴血 换算为 宽度 的比例)
+    [Header("血条宽度比例(一滴血 换算为 宽度 的比例)")]
     [SerializeField]
     private int _healthWidthScale;
     //血条宽度偏移
+    [Header("血条宽度偏移(左 <- 右)")]
     [SerializeField]
     private int _healthWidthOffset;
 
@@ -54,12 +56,20 @@ public class PlayerStatusUIController : MonoBehaviour
        await InitPlayerInfoAsync();
     }
 
+    /// <summary>
+    /// 装备下一个武器事件
+    /// </summary>
+    /// <param name="currentWeapon"></param>
     private void OnEquipTheNextWeapon(GameObject currentWeapon)
     {
         _currentWeapon = currentWeapon.GetComponent<Weapon>();
         InitWeaponHealthImage();
     }
 
+    /// <summary>
+    /// 玩家初始化完成
+    /// </summary>
+    /// <param name="currentPlayer"></param>
     private void OnPlayerInitCompleted(GameObject currentPlayer)
     {
         _playerCharecter = currentPlayer.GetComponent<PlayerCharecter>();
@@ -68,8 +78,11 @@ public class PlayerStatusUIController : MonoBehaviour
 
     private void Update()
     {
+        //刷新血量文字
         RefreshHealthText();
+        //刷新血量图形
         RefreshHealth();
+        //检查武器血量是否需要展示
         CheckWeaponHealthDisPlay();
     }
 
@@ -99,6 +112,9 @@ public class PlayerStatusUIController : MonoBehaviour
         _weaponHealthBack.sizeDelta = new Vector2(width, _weaponHealthBack.sizeDelta.y);
     }
 
+    /// <summary>
+    /// 刷新血量图形显示
+    /// </summary>
     private void RefreshHealth()
     {
         if (_playerCharecter != null)
@@ -117,6 +133,9 @@ public class PlayerStatusUIController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 刷新血量文字显示
+    /// </summary>
     private void RefreshHealthText()
     {
         if (_playerCharecter != null)
@@ -126,6 +145,9 @@ public class PlayerStatusUIController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 检查武器血量显示
+    /// </summary>
     private void CheckWeaponHealthDisPlay()
     {
         if (_weaponHealthFront.sizeDelta.x <= 0)
