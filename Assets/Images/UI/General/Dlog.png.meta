@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 4fb2805807e87ce4cba3ae562e3a6a87
+guid: 674ccb92cb1829c48ad1021d89c8a0b8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4157509419448142513
-    second: MoneyImg_0
+      213: -9104415004862185054
+    second: Dlog_0
+  - first:
+      213: -4783328903635218027
+    second: Dlog_1
+  - first:
+      213: 8823861685169819305
+    second: Dlog_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MoneyImg_0
+      name: Dlog_0
       rect:
         serializedVersion: 2
-        x: 26
-        y: 24
-        width: 103
-        height: 177
+        x: 0
+        y: 0
+        width: 1126
+        height: 616
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +121,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1ba0c802ac072b930800000000000000
-      internalID: 4157509419448142513
+      spriteID: 2a104735ace96a180800000000000000
+      internalID: -9104415004862185054
       vertices: []
       indices: 
       edges: []
@@ -125,7 +131,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 58a926bd08c2db24d821dc3b0af84127
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +141,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MoneyImg_0: 4157509419448142513
+      Dlog_0: -9104415004862185054
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

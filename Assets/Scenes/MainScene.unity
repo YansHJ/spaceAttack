@@ -873,6 +873,7 @@ MonoBehaviour:
   playerMaxHealth: 10
   playerCurrentHealth: 0
   playerCurrentWeaponHealth: 0
+  playerMoneyCnt: 0
   weaponActive: 1
   currentWeapon: {fileID: 0}
   ownedWeapons:
