@@ -53,4 +53,13 @@ public class EventManager
     {
         PlayerDestroied?.Invoke();
     }
+
+    /// <summary>
+    /// 玩家获取金钱
+    /// </summary>
+    public static event Action<int> PlayerGetMoney;
+    public static void CallPlayerGetMoney(int money)
+    {
+        PlayerGetMoney?.Invoke(money);
+    }
 }

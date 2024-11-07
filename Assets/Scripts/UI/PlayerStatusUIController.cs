@@ -12,19 +12,27 @@ public class PlayerStatusUIController : MonoBehaviour
 
     private Weapon _currentWeapon;
 
-    //玩家血量显示文本
+    [Header("玩家血量显示文本")]
     [SerializeField]
     private TextMeshProUGUI _playerHealthText;
-    //玩家武器血量显示文本
+
+    [Header("玩家武器血量显示文本")]
     [SerializeField]
     private TextMeshProUGUI _WeaponHealthText;
 
+    [Header("玩家血条背景")]
     [SerializeField]
     private RectTransform _playerHealthBack;
+
+    [Header("玩家血条前景")]
     [SerializeField]
     private RectTransform _playerHealthFront;
+
+    [Header("玩家武器血条背景")]
     [SerializeField]
     private RectTransform _weaponHealthBack;
+
+    [Header("玩家武器血条前景")]
     [SerializeField]
     private RectTransform _weaponHealthFront;
 
@@ -36,8 +44,12 @@ public class PlayerStatusUIController : MonoBehaviour
     [Header("血条宽度偏移(左 <- 右)")]
     [SerializeField]
     private int _healthWidthOffset;
+    //血条最大宽度
+    private int _maxHealthWidth = 500;
 
-    private int _maxWidth = 500;
+    [Header("金币文本")]
+    [SerializeField]
+    private TextMeshProUGUI _moneyCntText;
 
     private void OnEnable()
     {
@@ -78,8 +90,8 @@ public class PlayerStatusUIController : MonoBehaviour
 
     private void Update()
     {
-        //刷新血量文字
-        RefreshHealthText();
+        //刷新文字
+        RefreshText();
         //刷新血量图形
         RefreshHealth();
         //检查武器血量是否需要展示
@@ -92,9 +104,9 @@ public class PlayerStatusUIController : MonoBehaviour
     private void InitPlayerHealthImage()
     {
         int width = _playerCharecter.playerMaxHealth * _healthWidthScale;
-        if (width > _maxWidth)
+        if (width > _maxHealthWidth)
         {
-            width = _maxWidth;
+            width = _maxHealthWidth;
         }
         _playerHealthBack.sizeDelta = new Vector2(width, _playerHealthBack.sizeDelta.y);
     }
@@ -105,9 +117,9 @@ public class PlayerStatusUIController : MonoBehaviour
     private void InitWeaponHealthImage()
     {
         int width = _currentWeapon.maxWeaponHealth * _healthWidthScale;
-        if (width > _maxWidth)
+        if (width > _maxHealthWidth)
         {
-            width = _maxWidth;
+            width = _maxHealthWidth;
         }
         _weaponHealthBack.sizeDelta = new Vector2(width, _weaponHealthBack.sizeDelta.y);
     }
@@ -134,14 +146,17 @@ public class PlayerStatusUIController : MonoBehaviour
     }
 
     /// <summary>
-    /// 刷新血量文字显示
+    /// 刷新文字显示
     /// </summary>
-    private void RefreshHealthText()
+    private void RefreshText()
     {
         if (_playerCharecter != null)
         {
+            //血量文字
             _playerHealthText.text = _playerCharecter.playerCurrentHealth.ToString();
             _WeaponHealthText.text = _playerCharecter.playerCurrentWeaponHealth.ToString();
+            //金币文字
+            _moneyCntText.text = _playerCharecter.playerMoneyCnt.ToString();
         }
     }
 

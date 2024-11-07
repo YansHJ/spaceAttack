@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - BulletsParent
   - EnemysParent
+  - Money
   layers:
   - Default
   - TransparentFX
@@ -21,9 +22,9 @@ TagManager:
   - 
   - 
   - BottomVFX
-  - 
   - Player
   - PlayerWeapons
+  - Money
   - Bullet
   - Enemy
   - 

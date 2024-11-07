@@ -198,3 +198,7 @@ MonoBehaviour:
   enemyMaxHealth: 10
   enemyCurrentHealth: 0
   enemySpeed: 250
+  moneyMax: 1
+  moneyMin: 5
+  currentMoney: 0
+  moneyPerfab: {fileID: 6721000836217923422, guid: 49e7428adb289d545a9f18bf4339d527, type: 3}

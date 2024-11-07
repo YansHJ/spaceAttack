@@ -4,12 +4,13 @@ using UnityEngine;
 [RequireComponent(typeof(EnemyCharecter))]
 public class MinionGenericScript : MonoBehaviour
 {
+    //玩家实例
     private GameObject _playerObj;
-
+    //敌人属性
     private EnemyCharecter _enemyCharecter;
-
+    //敌人刚体
     private Rigidbody2D _rigidbody;
-
+    //子弹父级
     private GameObject _bulletsParent;
 
     //敌人当前状态

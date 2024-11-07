@@ -1,4 +1,5 @@
 using MoreMountains.Feedbacks;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,10 @@ public class PlayerCharecter : MonoBehaviour
     public int playerCurrentHealth;
     //玩家当前武器血量
     public int playerCurrentWeaponHealth = 0;
+
+    //玩家金币
+    public int playerMoneyCnt;
+
     //武器状态
     public bool weaponActive = true;
     //当前装备武器
@@ -29,6 +34,25 @@ public class PlayerCharecter : MonoBehaviour
     {
         _playerWeaponTrans = transform.Find("Weapons");
         _camemaShakeFeedBack = GetComponentInChildren<MMF_Player>();
+    }
+
+    private void OnEnable()
+    {
+        EventManager.PlayerGetMoney += OnPlayerGetMoney;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.PlayerGetMoney -= OnPlayerGetMoney;
+    }
+
+    /// <summary>
+    /// 玩家获取金钱
+    /// </summary>
+    /// <param name="moneyCnt">金钱数量</param>
+    private void OnPlayerGetMoney(int moneyCnt)
+    {
+        playerMoneyCnt += moneyCnt;
     }
 
     private void Start()
