@@ -1,5 +1,5 @@
 
 public enum GameLevelTypes
 {
-    Minion
+    Minion,Store
 }

@@ -79,9 +79,12 @@ public class PlayerCharecter : MonoBehaviour
             EventManager.CallPopover("装甲被击破！！");
             //武器损毁镜头振效
             _camemaShakeFeedBack.PlayFeedbacks();
+            //重置玩家的武器状态
             currentWeapon = null;
             weaponActive = false;
+            //销毁当前武器
             Destroy(_playerWeaponTrans.GetChild(0).gameObject);
+            //自动装填下一个武器
             WeaponInit();
         }
     }
@@ -100,15 +103,19 @@ public class PlayerCharecter : MonoBehaviour
         if (null == currentWeapon)
         {
             if (ownedWeapons.Count < 1)
-            {
+            {   
+                //没有下一个武器，玩家速度替换为本身的速度
                 playerCurrentSpeed = playerBaseSpeed;
                 weaponActive = false;
                 return;
             }
             else
             {
+                //切换至下一个武器
                 currentWeapon = ownedWeapons[0];
+                //移除武器列表的当前武器
                 ownedWeapons.Remove(currentWeapon);
+                //需改玩家的武器状态
                 weaponActive = true;
                 //修改玩家属性
                 playerCurrentSpeed = currentWeapon.GetComponent<Weapon>().playerWeaponSpeed;
@@ -116,6 +123,7 @@ public class PlayerCharecter : MonoBehaviour
             }
         }
         weaponActive = true;
+        //装备下一把武器事件
         EventManager.CallEquipTheNextWeapon(currentWeapon);
     }
 }

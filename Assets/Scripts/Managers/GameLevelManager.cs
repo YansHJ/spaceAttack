@@ -16,6 +16,13 @@ public class GameLevelManager : Singleton<GameLevelManager>
 
     private void LevelExecute()
     {
+        switch(_currentLevel.levelType)
+        {
+            case GameLevelTypes.Minion:
+                break;
+
+        }
+
         StartCoroutine(LevelStart());
     }
 
@@ -29,23 +36,6 @@ public class GameLevelManager : Singleton<GameLevelManager>
         EventManager.CallMonsterGenerateStart(_currentLevel.monsterInfos, _currentLevel.monsterGenerateInterval);
         //关卡倒计时开始
         StartCoroutine(LevelCountDown());
-    }
-
-    /// <summary>
-    /// 关卡倒计时
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator LevelCountDown()
-    {
-        while (_currentTimer >= 1)
-        {
-            _currentTimer--;
-            yield return new WaitForSeconds(1f);
-        }
-        if (_currentTimer <= 0)
-        {
-            LevelEnd();
-        }
     }
 
     /// <summary>
@@ -66,4 +56,24 @@ public class GameLevelManager : Singleton<GameLevelManager>
         //暂时
         LevelExecute();
     }
+
+
+    /// <summary>
+    /// 关卡倒计时
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator LevelCountDown()
+    {
+        while (_currentTimer >= 1)
+        {
+            _currentTimer--;
+            yield return new WaitForSeconds(1f);
+        }
+        if (_currentTimer <= 0)
+        {
+            LevelEnd();
+        }
+    }
+
+
 }
