@@ -62,4 +62,13 @@ public class EventManager
     {
         PlayerGetMoney?.Invoke(money);
     }
+
+    /// <summary>
+    /// 提示框事件
+    /// </summary>
+    public static event Action<string> Popover;
+    public static void CallPopover(string message)
+    {
+        Popover?.Invoke(message);
+    }
 }

@@ -81,6 +81,8 @@ public class PlayerController : MonoBehaviour
         //测试
         WeaponInfo weaponInfo = PlayerWeaponManager.Instance.GetRandomWeaponByGrade(WeaponGrade.white);
         Instantiate(weaponInfo.weaponObj, transform.transform);
+
+        EventManager.CallPopover("测试一下数据测试一下数据");
     }
 
     /// <summary>
