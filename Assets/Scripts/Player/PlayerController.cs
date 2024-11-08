@@ -76,11 +76,11 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void PlayerSpaceTouch()
     {
-        _camemaShakeFeedBack.PlayFeedbacks();
+        //_camemaShakeFeedBack.PlayFeedbacks();
 
         //测试
-        WeaponInfo weaponInfo = PlayerWeaponManager.Instance.GetRandomWeaponByGrade(WeaponGrade.white);
-        Instantiate(weaponInfo.weaponObj, transform.transform);
+        /*WeaponInfo weaponInfo = PlayerWeaponManager.Instance.GetRandomWeaponByGrade(WeaponGrade.white);
+        Instantiate(weaponInfo.weaponObj, transform.transform);*/
 
         EventManager.CallPopover("测试一下数据测试一下数据");
     }

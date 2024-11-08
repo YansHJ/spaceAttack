@@ -75,6 +75,9 @@ public class PlayerCharecter : MonoBehaviour
     {
         if (0 >= playerCurrentWeaponHealth && null != currentWeapon)
         {
+            //武器损毁提示框
+            EventManager.CallPopover("装甲被击破！！");
+            //武器损毁镜头振效
             _camemaShakeFeedBack.PlayFeedbacks();
             currentWeapon = null;
             weaponActive = false;
