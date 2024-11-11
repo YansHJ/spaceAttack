@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameLevelManager : Singleton<GameLevelManager>
@@ -6,11 +7,20 @@ public class GameLevelManager : Singleton<GameLevelManager>
 
     public GameLevelBase_SO _currentLevel;
 
+    public List<GameLevelHandlerInfo> levelHandlers;
+
+    private Dictionary<int, BaseLevelHandler> _levelHandlerDicts = new();
+
+    private BaseLevelHandler handler;
+
     private float _currentTimer;
 
 
     private void Start()
     {
+        //初始化关卡处理器
+        HandlersInit();
+        //关卡执行
         LevelExecute();
     }
 
@@ -19,24 +29,41 @@ public class GameLevelManager : Singleton<GameLevelManager>
         switch(_currentLevel.levelType)
         {
             case GameLevelTypes.Minion:
+                LevelStart(1);
                 break;
+            case GameLevelTypes.Store:
+                LevelStart(2);
+                break;
+                
 
         }
-
-        StartCoroutine(LevelStart());
     }
 
-    IEnumerator LevelStart()
+    private void LevelStart(int handlerId)
     {
+        //获取处理器
+        _levelHandlerDicts.TryGetValue(handlerId, out handler);
+        handler.LevelInit(_currentLevel);
+        handler.LevelStart();
         //同步当前关卡时长
         _currentTimer = _currentLevel.levelTimer;
-        //15s准备时间
-        yield return new WaitForSeconds(15f);
-        //开始生成怪物事件
-        EventManager.CallMonsterGenerateStart(_currentLevel.monsterInfos, _currentLevel.monsterGenerateInterval);
-        //关卡倒计时开始
-        StartCoroutine(LevelCountDown());
+        //当前关卡为计时关卡
+        if (_currentLevel.levelTiming)
+        {
+            //关卡倒计时开始
+            StartCoroutine(LevelCountDown());
+        }
     }
+
+    private void LevelEnd()
+    {
+        //暂时
+        _currentLevel = _currentLevel.nextLevelBranchs[0];
+
+        //暂时
+        LevelExecute();
+    }
+
 
     /// <summary>
     /// 获取当前关卡倒计时
@@ -46,17 +73,6 @@ public class GameLevelManager : Singleton<GameLevelManager>
     {
         return _currentTimer;
     }
-
-    private void LevelEnd()
-    {
-        //暂时
-        _currentLevel = _currentLevel.nextLevelBranchs[0];
-        //停止怪物生成事件
-        EventManager.CallMonsterGenerateStop();
-        //暂时
-        LevelExecute();
-    }
-
 
     /// <summary>
     /// 关卡倒计时
@@ -75,5 +91,16 @@ public class GameLevelManager : Singleton<GameLevelManager>
         }
     }
 
+    /// <summary>
+    /// 关卡处理器初始化
+    /// </summary>
+    private void HandlersInit()
+    {
+        if (levelHandlers != null && levelHandlers.Count > 0)
+        levelHandlers.ForEach(o =>
+        {
+            _levelHandlerDicts.Add(o.levelHandlerId, o.handler);
+        });
+    }
 
 }

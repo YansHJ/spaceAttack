@@ -16,6 +16,9 @@ public class GameLevelBase_SO : ScriptableObject
     [Header("关卡类型")]
     public GameLevelTypes levelType;
 
+    [Header("计时关卡")]
+    public bool levelTiming;
+
     [Header("关卡持续时长/s")]
     public int levelTimer;
 
@@ -24,6 +27,9 @@ public class GameLevelBase_SO : ScriptableObject
 
     [Header("关卡怪物信息")]
     public List<GameLevelMonsterInfo> monsterInfos;
+
+    [Header("关卡商店信息")]
+    public GameLevelStoreInfo storeInfo;
 
     [Header("下一关分支")]
     public List<GameLevelBase_SO> nextLevelBranchs;

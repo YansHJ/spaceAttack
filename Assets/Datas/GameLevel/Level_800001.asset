@@ -16,11 +16,14 @@ MonoBehaviour:
   levelId: 800001
   levelOfLevel: 1
   levelType: 0
+  levelTiming: 1
   levelTimer: 120
   monsterGenerateInterval: 3
   monsterInfos:
   - monsterPrefab: {fileID: 7454374665101387646, guid: 6cb534e9a9bfed947addece6e40812a7, type: 3}
     refreshProbability: 0.99
     max: 10
+  storeInfo:
+    maxGoodsCnt: 0
   nextLevelBranchs:
-  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 8130531d1bf8bdb498fd80d2cb1255b4, type: 2}
