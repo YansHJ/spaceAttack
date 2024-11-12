@@ -3,16 +3,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCharecter : MonoBehaviour
+public class PlayerCharecter : Charecter
 {
-    //玩家基础速度
-    public int playerBaseSpeed;
-    //玩家速度
-    public int playerCurrentSpeed;
-    //玩家最大血量
-    public int playerMaxHealth;
-    //玩家当前血量
-    public int playerCurrentHealth;
     //玩家当前武器血量
     public int playerCurrentWeaponHealth = 0;
 
@@ -91,8 +83,8 @@ public class PlayerCharecter : MonoBehaviour
 
     private void PlayerCharecterInit()
     {
-        playerCurrentHealth = playerMaxHealth;
-        playerCurrentSpeed = playerBaseSpeed;
+        currentHealth = maxHealth;
+        currentSpeed = baseSpeed;
     }
 
     /// <summary>
@@ -105,7 +97,7 @@ public class PlayerCharecter : MonoBehaviour
             if (ownedWeapons.Count < 1)
             {   
                 //没有下一个武器，玩家速度替换为本身的速度
-                playerCurrentSpeed = playerBaseSpeed;
+                currentSpeed = baseSpeed;
                 weaponActive = false;
                 return;
             }
@@ -118,7 +110,7 @@ public class PlayerCharecter : MonoBehaviour
                 //需改玩家的武器状态
                 weaponActive = true;
                 //修改玩家属性
-                playerCurrentSpeed = currentWeapon.GetComponent<Weapon>().playerWeaponSpeed;
+                currentSpeed = currentWeapon.GetComponent<Weapon>().playerWeaponSpeed;
                 playerCurrentWeaponHealth = currentWeapon.GetComponent<Weapon>().maxWeaponHealth;
             }
         }

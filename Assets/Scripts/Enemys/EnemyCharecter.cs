@@ -1,15 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCharecter : MonoBehaviour
+public class EnemyCharecter : Charecter
 {
-    [Header("敌人最大血量")]
-    public int enemyMaxHealth;
-    [Header("敌人当前血量")]
-    public int enemyCurrentHealth;
-    [Header("敌人速度")]
-    public int enemySpeed;
-
     [Range(1f, 100f)]
     [SerializeField]
     private int moneyMax;
@@ -27,14 +20,15 @@ public class EnemyCharecter : MonoBehaviour
 
     private void Awake()
     {
-        enemyCurrentHealth = enemyMaxHealth;
+        currentHealth = maxHealth;
+        currentSpeed = baseSpeed;
         //初始化money
         GenerateMoney();
     }
 
     private void Update()
     {
-        if (enemyCurrentHealth <= 0)
+        if (currentHealth <= 0)
         {
             EnemyDead();
         }
@@ -48,7 +42,7 @@ public class EnemyCharecter : MonoBehaviour
         currentMoney = Random.Range(moneyMin, moneyMax);
     }
 
-    private void EnemyDead()
+    public void EnemyDead()
     {
         //生成金币
         List<GameObject> moneyList = new();

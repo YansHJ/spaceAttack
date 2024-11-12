@@ -52,6 +52,11 @@ public class Weapon : MonoBehaviour
             bullet.transform.parent = _bulletsParent.transform;
             Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
             bulletRb.linearVelocity = bulletDir * bulletSpeed;
+            //子弹来源
+            if (bullet.TryGetComponent<GeneralBulletScript>(out var generalBulletScript))
+            {
+                generalBulletScript.source = GameManager.Instance.TryGetRootParent(transform.gameObject);
+            }
         }
     }
 

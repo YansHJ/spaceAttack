@@ -52,6 +52,19 @@ public class GameManager : Singleton<GameManager>
         return await _playerCompletionSource.Task;
     }
 
-    
+    /// <summary>
+    /// 获取最顶级父级
+    /// </summary>
+    /// <param name="gameObject"></param>
+    /// <returns></returns>
+    public GameObject TryGetRootParent(GameObject gameObject)
+    {
+        Transform currentTransfrom = gameObject.transform;
+        while (currentTransfrom.parent != null)
+        {
+            currentTransfrom = currentTransfrom.parent;
+        }
+        return currentTransfrom.gameObject;
+    }
 
 }

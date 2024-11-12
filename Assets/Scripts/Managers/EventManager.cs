@@ -12,11 +12,11 @@ public class EventManager
         EquipTheNextWeapon?.Invoke(currentWeapon);
     }
 
-    //造成伤害
-    public static event Action<Collider2D, float> CauseDamage;
-    public static void CallCauseDamage(Collider2D other, float bulletDamage)
+    //提交伤害
+    public static event Action<DamageInfo> SubmitDamage;
+    public static void CallSubmitDamage(DamageInfo damageInfo)
     {
-        CauseDamage?.Invoke(other, bulletDamage);
+        SubmitDamage?.Invoke(damageInfo);
     }
 
     /// <summary>

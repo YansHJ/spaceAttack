@@ -10,38 +10,37 @@ public class DamageManager : Singleton<DamageManager>
 
     private void OnEnable()
     {
-        EventManager.CauseDamage += OnCauseDamage;
+        EventManager.SubmitDamage += OnSubmitDamage;
     }
 
     private void OnDisable()
     {
-        EventManager.CauseDamage -= OnCauseDamage;
+        EventManager.SubmitDamage -= OnSubmitDamage;
     }
 
-    private void OnCauseDamage(Collider2D other, float bulletDamage)
+    private void OnSubmitDamage(DamageInfo damageInfo)
     {
-        Debug.Log("当前伤害Tag: " + other.tag);
-        if (other.tag.StartsWith("Player"))
+        Debug.Log("当前伤害Tag: " + damageInfo.defender.tag);
+        if (damageInfo.defender.tag.StartsWith("Player"))
         {
-            //伤害显示
-            DamageTextSpawn(other.transform, bulletDamage);
             //伤害计算
-            DamageToPlayer(other, bulletDamage);
+            DamageToPlayer(damageInfo);
         }
-        if (other.tag.StartsWith("Enemy"))
+        if (damageInfo.defender.tag.StartsWith("Enemy"))
         {
-            //伤害显示
-            DamageTextSpawn(other.transform, bulletDamage);
             //伤害计算
-            DamageToEnemys(other, bulletDamage);
+            DefaultDamageCheck(damageInfo);
         }
+        //伤害显示
+        DamageTextSpawn(damageInfo.defender.transform, damageInfo.damage.damageValue);
     }
 
-    private void DamageToEnemys(Collider2D other, float bulletDamage)
+    private void DefaultDamageCheck(DamageInfo damageInfo)
     {
-        EnemyCharecter enemyCharecter = other.transform.GetComponent<EnemyCharecter>();
-        //计算对敌伤害
-        enemyCharecter.enemyCurrentHealth -= (int) bulletDamage;
+        if (damageInfo.defender.TryGetComponent<Charecter>(out var charecter))
+        {
+            charecter.currentHealth -= damageInfo.damage.damageValue;
+        }
     }
 
     /// <summary>
@@ -49,17 +48,17 @@ public class DamageManager : Singleton<DamageManager>
     /// </summary>
     /// <param name="other">玩家目标</param>
     /// <param name="bulletDamage">伤害</param>
-    private void DamageToPlayer(Collider2D other, float bulletDamage)
+    private void DamageToPlayer(DamageInfo damageInfo)
     {
-        PlayerCharecter _playerCharecter = FindTopComponet<PlayerCharecter>(other);
-        if (_playerCharecter.playerCurrentWeaponHealth - bulletDamage <= 0)
+        PlayerCharecter _playerCharecter = FindTopComponet<PlayerCharecter>(damageInfo.defender);
+        if (_playerCharecter.playerCurrentWeaponHealth - damageInfo.damage.damageValue <= 0)
         {
-            _playerCharecter.playerCurrentHealth -= ((int)bulletDamage - _playerCharecter.playerCurrentWeaponHealth);
+            _playerCharecter.currentHealth -= (damageInfo.damage.damageValue - _playerCharecter.playerCurrentWeaponHealth);
             _playerCharecter.playerCurrentWeaponHealth = 0;
         }
         else
         {
-            _playerCharecter.playerCurrentWeaponHealth -= (int)bulletDamage;
+            _playerCharecter.playerCurrentWeaponHealth -= damageInfo.damage.damageValue;
         }
     }
 
@@ -80,9 +79,9 @@ public class DamageManager : Singleton<DamageManager>
     /// <typeparam name="T">组件类型</typeparam>
     /// <param name="other">当前碰撞体</param>
     /// <returns>组件</returns>
-    T FindTopComponet<T>(Collider2D other) where T : Component
+    T FindTopComponet<T>(GameObject obj) where T : Component
     {
-        Transform current = other.transform;
+        Transform current = obj.transform;
         while (null != current.parent)
         {
             current = current.parent;

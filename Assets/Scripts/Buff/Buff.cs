@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public abstract class Buff
+public class Buff
 {
     [Header("buff名称")]
     public string buffName;
@@ -23,9 +23,15 @@ public abstract class Buff
         this.targetObj = targetObj;
     }
 
-    protected abstract void Apply();
+    protected virtual void Apply()
+    {
 
-    protected abstract void Remove();
+    }
+
+    protected virtual void Remove()
+    {
+
+    }
 
     public virtual void Update(float deltaTime)
     {

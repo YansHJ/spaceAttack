@@ -84,7 +84,7 @@ public class MinionGenericScript : MonoBehaviour
         //靠近玩家
         _destination = _playerObj.transform.position;
         //移动
-        _rigidbody.linearVelocity = _enemyCharecter.enemySpeed * Time.fixedDeltaTime * ToDestinationDir(_destination);
+        _rigidbody.linearVelocity = _enemyCharecter.currentSpeed * Time.fixedDeltaTime * ToDestinationDir(_destination);
         //距离玩家达到指定距离范围
         if (Vector3.Distance(_playerObj.transform.position, transform.position) <= farFromPlayer)
         {
@@ -129,7 +129,7 @@ public class MinionGenericScript : MonoBehaviour
             _arrived = false;
         }
         //移动
-        _rigidbody.linearVelocity = _enemyCharecter.enemySpeed * Time.fixedDeltaTime * ToDestinationDir(_destination);
+        _rigidbody.linearVelocity = _enemyCharecter.currentSpeed * Time.fixedDeltaTime * ToDestinationDir(_destination);
         //移动到目的地
         if (Vector3.Distance(transform.position, _destination) <= 1)
         {

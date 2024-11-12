@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void PlayerMove()
     {
-        _playerRb.linearVelocity = _playerCharecter.playerCurrentSpeed * Time.fixedDeltaTime * _playerDir;
+        _playerRb.linearVelocity = _playerCharecter.currentSpeed * Time.fixedDeltaTime * _playerDir;
     }
 
     /// <summary>

@@ -103,7 +103,7 @@ public class PlayerStatusUIController : MonoBehaviour
     /// </summary>
     private void InitPlayerHealthImage()
     {
-        int width = _playerCharecter.playerMaxHealth * _healthWidthScale;
+        int width = _playerCharecter.maxHealth * _healthWidthScale;
         if (width > _maxHealthWidth)
         {
             width = _maxHealthWidth;
@@ -132,7 +132,7 @@ public class PlayerStatusUIController : MonoBehaviour
         if (_playerCharecter != null)
         {
             //当前血量比例
-            float healthScale = _playerCharecter.playerCurrentHealth / (float) _playerCharecter.playerMaxHealth;
+            float healthScale = _playerCharecter.currentHealth / (float) _playerCharecter.maxHealth;
             //血量显示长度
             _playerHealthFront.sizeDelta = new Vector2((_playerHealthBack.sizeDelta.x * healthScale) - _healthWidthOffset, _playerHealthFront.sizeDelta.y);
         }
@@ -153,7 +153,7 @@ public class PlayerStatusUIController : MonoBehaviour
         if (_playerCharecter != null)
         {
             //血量文字
-            _playerHealthText.text = _playerCharecter.playerCurrentHealth.ToString();
+            _playerHealthText.text = _playerCharecter.currentHealth.ToString();
             _WeaponHealthText.text = _playerCharecter.playerCurrentWeaponHealth.ToString();
             //金币文字
             _moneyCntText.text = _playerCharecter.playerMoneyCnt.ToString();

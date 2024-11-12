@@ -6,7 +6,9 @@ public class GeneralBulletScript : MonoBehaviour
     [Header("子弹存活时间")]
     public float bulletlifeTime = 3f;
     [Header("子弹威力")]
-    public float bulletDamage = 1f;
+    public int bulletDamage = 1;
+    
+    public GameObject source;
 
     private void Start()
     {
@@ -15,7 +17,21 @@ public class GeneralBulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        
+        Damage damage = new()
+        {
+            damageValue = bulletDamage
+        };
+        DamageInfo damageInfo = new()
+        {
+            defender = other.gameObject,
+            damage = damage
+        };
+        if (source != null)
+        {
+            damageInfo.attacker = source;
+        }
         Destroy(gameObject);
-        EventManager.CallCauseDamage(other, bulletDamage);
+        EventManager.CallSubmitDamage(damageInfo);
     }
 }
