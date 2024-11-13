@@ -1,10 +1,10 @@
 using UnityEngine;
 
 /// <summary>
-/// 一次性恢复当前血量
+/// 提高血量上限
 /// </summary>
-[CreateAssetMenu(fileName = "HpIncreaseOnlyOnTime", menuName = "Yans/BUFF/BuffAchieves/HpIncreaseOnlyOnTime")]
-public class HpIncreaseOnlyOnTime : BuffBaseModule
+[CreateAssetMenu(fileName = "HpUpperLimitIncrease", menuName = "Yans/BUFF/BuffAchieves/HpUpperLimitIncrease")]
+public class HpUpperLimitIncrease : BuffBaseModule
 {
     public BuffProperty property;
 
@@ -12,6 +12,7 @@ public class HpIncreaseOnlyOnTime : BuffBaseModule
     {
         if (GameManager.Instance.TryGetRootParent(buffInfo.target).TryGetComponent<Charecter>(out var charecter))
         {
+            charecter.maxHealth += property.health;
             if (charecter.maxHealth <= charecter.currentHealth + property.health)
             {
                 charecter.currentHealth = charecter.maxHealth;

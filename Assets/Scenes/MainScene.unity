@@ -898,6 +898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59afc8ab73cd9864ca19b6a9d82e8f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeBuffList: []
 --- !u!1 &526752201
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,7 +1499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35ded6adb8d83ee43a4a2a847ff6dbcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectBuff: {fileID: 11400000, guid: 33fd416c5f3ce1649aefeca912915c6b, type: 2}
+  effectBuff: {fileID: 11400000, guid: 54bb93916d30b7343b3ff422f4cab386, type: 2}
 --- !u!1 &1329722094
 GameObject:
   m_ObjectHideFlags: 0
