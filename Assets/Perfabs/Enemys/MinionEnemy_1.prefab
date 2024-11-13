@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7176886274372867524}
   - component: {fileID: 1727741053161943331}
   - component: {fileID: 5855377873388090878}
+  - component: {fileID: 4033283851181220251}
   m_Layer: 14
   m_Name: MinionEnemy_1
   m_TagString: Enemy
@@ -203,3 +204,16 @@ MonoBehaviour:
   moneyMin: 5
   currentMoney: 0
   moneyPerfab: {fileID: 6721000836217923422, guid: 49e7428adb289d545a9f18bf4339d527, type: 3}
+--- !u!114 &4033283851181220251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7454374665101387646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59afc8ab73cd9864ca19b6a9d82e8f0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeBuffList: []

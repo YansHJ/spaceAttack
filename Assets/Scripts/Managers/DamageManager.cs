@@ -20,6 +20,12 @@ public class DamageManager : Singleton<DamageManager>
 
     private void OnSubmitDamage(DamageInfo damageInfo)
     {
+        //BUFF处理
+        if (null != damageInfo.attacker && null != damageInfo.defender)
+        {
+            BuffHandle(damageInfo);
+        }
+        //伤害结算
         Debug.Log("当前伤害Tag: " + damageInfo.defender.tag);
         if (damageInfo.defender.tag.StartsWith("Player"))
         {
@@ -87,5 +93,31 @@ public class DamageManager : Singleton<DamageManager>
             current = current.parent;
         }
         return current.GetComponent<T>();
+    }
+
+    /// <summary>
+    /// 伤害Buff处理
+    /// </summary>
+    /// <param name="damageInfo"></param>
+    private void BuffHandle(DamageInfo damageInfo)
+    {
+        //攻击者的BUFF
+        BuffHandler attackerBuffHandler = GameManager.Instance.TryGetComponetInHierarchy<BuffHandler>(damageInfo.attacker);
+        if (null != attackerBuffHandler)
+        {
+            attackerBuffHandler.activeBuffList.ForEach(o =>
+            {
+                o.buffData.OnHit.Apply(o, damageInfo);
+            });
+        }
+        //受击者的BUFF
+        BuffHandler defenderBuffHandler = GameManager.Instance.TryGetComponetInHierarchy<BuffHandler>(damageInfo.defender);
+        if (null != defenderBuffHandler)
+        {
+            defenderBuffHandler.activeBuffList.ForEach(o =>
+            {
+                o.buffData.OnBeHurt.Apply(o, damageInfo);
+            });
+        }
     }
 }

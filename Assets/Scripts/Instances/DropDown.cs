@@ -6,7 +6,6 @@ public class DropDown : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("获取到了治疗");
         if (GameManager.Instance.TryGetRootParent(collision.gameObject).TryGetComponent<BuffHandler>(out var buffHandler))
         {
             BuffInfo buffInfo = new()
@@ -16,5 +15,6 @@ public class DropDown : MonoBehaviour
             };
             buffHandler.AddBuff(buffInfo);
         }
+        Destroy(gameObject);
     }
 }   

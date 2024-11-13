@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90e2201f0c6678446b55802c7321bc09, type: 3}
-  m_Name: 20_HPMaxIncrease_buff
+  m_Name: 10_HPMaxIncrease_buff
   m_EditorClassIdentifier: 
-  buffId: 300002
-  buffName: "\u63D0\u9AD820\u8840\u91CF\u4E0A\u9650"
-  buffDescription: "\u63D0\u9AD820\u8840\u91CF\u4E0A\u9650"
+  buffId: 300003
+  buffName: "\u63D0\u9AD810\u8840\u91CF\u4E0A\u9650"
+  buffDescription: "\u63D0\u9AD810\u8840\u91CF\u4E0A\u9650"
   buffIcon: {fileID: 0}
   priority: 1
   maxStack: 1
   tags:
   - "\u4E00\u6B21\u6027"
   isPermanent: 0
-  duration: 0
+  duration: 1
   tickTime: 1
   updateTimeEnum: 0
   removeStackUpdateEnum: 0
-  OnCreate: {fileID: 11400000, guid: 5be3fb8149b5b2a4f8fdb52d53aee863, type: 2}
+  OnCreate: {fileID: 11400000, guid: 71b9055dbe392f14588908de413df03c, type: 2}
   OnRemove: {fileID: 0}
   OnTick: {fileID: 0}
   OnHit: {fileID: 0}

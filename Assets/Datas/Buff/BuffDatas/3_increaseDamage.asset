@@ -10,25 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90e2201f0c6678446b55802c7321bc09, type: 3}
-  m_Name: 20_HPMaxIncrease_buff
+  m_Name: 3_increaseDamage
   m_EditorClassIdentifier: 
-  buffId: 300002
-  buffName: "\u63D0\u9AD820\u8840\u91CF\u4E0A\u9650"
-  buffDescription: "\u63D0\u9AD820\u8840\u91CF\u4E0A\u9650"
+  buffId: 300004
+  buffName: "\u589E\u4F243"
+  buffDescription: "\u5355\u6B21\u653B\u51FB\u589E\u52A03\u70B9\u4F24\u5BB3"
   buffIcon: {fileID: 0}
   priority: 1
-  maxStack: 1
-  tags:
-  - "\u4E00\u6B21\u6027"
+  maxStack: 5
+  tags: []
   isPermanent: 0
-  duration: 0
-  tickTime: 1
-  updateTimeEnum: 0
-  removeStackUpdateEnum: 0
-  OnCreate: {fileID: 11400000, guid: 5be3fb8149b5b2a4f8fdb52d53aee863, type: 2}
+  duration: 20
+  tickTime: 0
+  updateTimeEnum: 1
+  removeStackUpdateEnum: 1
+  OnCreate: {fileID: 0}
   OnRemove: {fileID: 0}
   OnTick: {fileID: 0}
-  OnHit: {fileID: 0}
+  OnHit: {fileID: 11400000, guid: 256ed2ed4c9a7f14e915aea8bb6a8274, type: 2}
   OnBeHurt: {fileID: 0}
   OnKill: {fileID: 0}
   OnBeKill: {fileID: 0}

@@ -18,7 +18,8 @@ MonoBehaviour:
   buffIcon: {fileID: 0}
   priority: 0
   maxStack: 5
-  tags: []
+  tags:
+  - "\u4E00\u6B21\u6027"
   isPermanent: 0
   duration: 5
   tickTime: 5
