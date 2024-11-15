@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f96bb16a30c074a939a4f2113e04be, type: 3}
+  m_Name: BuffDatas
+  m_EditorClassIdentifier: 
+  itemDataDescr: "\u6240\u6709\u7684Buff\u7269\u54C1"
+  itmeList:
+  - itemId: 400001
+    itemName: "\u589E\u52A010\u70B9\u8840\u91CF\u4E0A\u9650"
+    itemDescription: "\u589E\u52A010\u70B9\u8840\u91CF\u4E0A\u9650"
+    itemType: 1
+    itemQuality: 1
+    itemTags:
+    - BUFF
+    - "\u8840\u91CF"
+    itemIcon: {fileID: 21300002, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
+    buffData: {fileID: 11400000, guid: 2635c7af1f6081841878c42480dea500, type: 2}
+    weaponObj: {fileID: 0}
+  - itemId: 400002
+    itemName: "\u589E\u52A020\u70B9\u8840\u91CF\u4E0A\u9650"
+    itemDescription: "\u589E\u52A020\u70B9\u8840\u91CF\u4E0A\u9650"
+    itemType: 1
+    itemQuality: 1
+    itemTags:
+    - BUFF
+    - "\u8840\u91CF"
+    itemIcon: {fileID: 21300012, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
+    buffData: {fileID: 11400000, guid: 54bb93916d30b7343b3ff422f4cab386, type: 2}
+    weaponObj: {fileID: 0}

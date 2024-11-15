@@ -22,4 +22,5 @@ MonoBehaviour:
   monsterInfos: []
   storeInfo:
     maxGoodsCnt: 5
-  nextLevelBranchs: []
+  nextLevelBranchs:
+  - {fileID: 11400000, guid: 180bb9022e5ec0749b47f9c55df64180, type: 2}

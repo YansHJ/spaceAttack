@@ -22,3 +22,12 @@ public class TagConstants
     public const string ENEMYS_PARENT = "EnemysParent";
 }
 
+public class SceneContants
+{
+    public const string RUNTIME_UI = "RuntimeUIScene";
+
+    public const string STORE_UI = "StoreScene";
+
+    public const string MAIN_SCENE = "MainScene";
+}
+

@@ -60,6 +60,8 @@ public class GameLevelManager : Singleton<GameLevelManager>
         //暂时
         _currentLevel = _currentLevel.nextLevelBranchs[0];
 
+        handler.LevelEnd();
+
         //暂时
         LevelExecute();
     }

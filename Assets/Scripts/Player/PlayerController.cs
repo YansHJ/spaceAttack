@@ -1,5 +1,6 @@
 using MoreMountains.Feedbacks;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -82,7 +83,16 @@ public class PlayerController : MonoBehaviour
         /*WeaponInfo weaponInfo = PlayerWeaponManager.Instance.GetRandomWeaponByGrade(WeaponGrade.white);
         Instantiate(weaponInfo.weaponObj, transform.transform);*/
 
-        EventManager.CallPopover("测试一下数据测试一下数据");
+        //测试取物品
+        List<Item> items = ItemManager.Instance.TryGetItemsWithConditions(5, ItemType.Any, ItemQuality.Any);
+        string value = "";
+        items.ForEach(o =>
+        {
+            value += o.itemName + " | ";
+        });
+        EventManager.CallPopover(value);
+
+        
     }
 
     /// <summary>
