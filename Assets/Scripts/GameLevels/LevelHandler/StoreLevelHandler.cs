@@ -7,7 +7,7 @@ public class StoreLevelHandler : BaseLevelHandler
     {
         base.LevelStart();
         //卸载运行时UI
-        ScenesController.Instance.UnloadScene(SceneContants.RUNTIME_UI);
+        ScenesController.Instance.TryUnloadScene(SceneContants.RUNTIME_UI);
         //加载商店UI
         ScenesController.Instance.LoadSceneAsync(SceneContants.STORE_UI);
     }
@@ -16,7 +16,7 @@ public class StoreLevelHandler : BaseLevelHandler
     {
         base.LevelEnd();
         //卸载商店UI
-        ScenesController.Instance.UnloadScene(SceneContants.STORE_UI);
+        ScenesController.Instance.TryUnloadScene(SceneContants.STORE_UI);
     }
     
 }
