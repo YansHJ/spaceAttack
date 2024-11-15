@@ -82,7 +82,10 @@ public class BuffHandler : MonoBehaviour
                         currentBuff.durationTimer = currentBuff.buffData.duration;
                         break;
                 }
-                currentBuff.buffData.OnCreate.Apply(currentBuff);
+                if (currentBuff.buffData.OnCreate != null)
+                {
+                    currentBuff.buffData.OnCreate.Apply(buffInfo);
+                }
             }
         }
         else
@@ -91,7 +94,10 @@ public class BuffHandler : MonoBehaviour
             buffInfo.durationTimer = buffInfo.buffData.duration;
             buffInfo.currentStack = 1;
             buffInfo.tickTimer = buffInfo.buffData.tickTime;
-            buffInfo.buffData.OnCreate.Apply(buffInfo);
+            if (buffInfo.buffData.OnCreate != null)
+            {
+                buffInfo.buffData.OnCreate.Apply(buffInfo);
+            }
             activeBuffList.Add(buffInfo);
         }
     }
