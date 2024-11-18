@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class StoreGoodsUI : MonoBehaviour
 {
+    public GameObject goodsTemp;
+
     public GameObject goodsDetailPrefab;
 
     public int storeGoodsCnt = 10;

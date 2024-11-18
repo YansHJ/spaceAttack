@@ -682,7 +682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0b8643cc804964086f9a10f07193e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentLevel: {fileID: 11400000, guid: 8130531d1bf8bdb498fd80d2cb1255b4, type: 2}
+  _currentLevel: {fileID: 11400000, guid: 180bb9022e5ec0749b47f9c55df64180, type: 2}
   levelHandlers:
   - levelHandlerId: 1
     handler: {fileID: 591300651}
